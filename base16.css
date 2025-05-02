@@ -1,28 +1,28 @@
 /**
-* @name base16-discord
-* @author @bypass_
-* @version 0.1.6
+* @name base16-discord-amoled
+* @author @bypass_ (modified by User + AI)
+* @version 0.2.0
 * @website https://github.com/imbypass/base16-Discord
-* @description Default Discord theme fitted with base16 variables
+* @description Default Discord theme fitted with base16 variables, optimized for AMOLED displays.
 **/
 
 :root {
-    --base00: #191724;
-    --base01: #1f1d2e;
-    --base02: #26233a;
-    --base03: #6e6a86;
-    --base04: #908caa;
-    --base05: #e0def4;
-    --base06: #e0def4;
-    --base07: #524f67;
-    --base08: #eb6f92;
-    --base09: #f6c177;
-    --base0A: #ebbcba;
-    --base0B: #31748f;
-    --base0C: #9ccfd8;
-    --base0D: #c4a7e7;
-    --base0E: #f6c177;
-    --base0F: #524f67;
+    --base00: #000000; /* Darker Primary Background (True Black for AMOLED) */
+    --base01: #0c0c0c; /* Darker Secondary Background */
+    --base02: #1a1a1a; /* Darker Tertiary Background / Accent */
+    --base03: #6e6a86; /* Text Muted, Borders */
+    --base04: #908caa; /* Text Secondary, Icons */
+    --base05: #e0def4; /* Text Primary, Foreground */
+    --base06: #e0def4; /* Text Primary, Foreground (Duplicate) */
+    --base07: #524f67; /* Text Brand, Default Folder */
+    --base08: #eb6f92; /* Red/Danger */
+    --base09: #f6c177; /* Orange/Warning */
+    --base0A: #ebbcba; /* Yellow/Warning (Alt) */
+    --base0B: #31748f; /* Green/Success */
+    --base0C: #9ccfd8; /* Cyan */
+    --base0D: #c4a7e7; /* Blue/Brand */
+    --base0E: #f6c177; /* Magenta (Duplicate of Orange) */
+    --base0F: #524f67; /* Gray (Duplicate of Text Brand) */
 }
 
 .theme-light,
@@ -91,7 +91,7 @@
     --channels-default: var(--base04) !important;
     --channel-text-area-placeholder: var(--base03) !important;
     --channeltextarea-background: var(--base01) !important;
-    --chat-background-default: var(--base02) !important;
+    --chat-background-default: var(--base00) !important; /* Often the main chat background */
     --checkbox-background-checked: var(--base0D) !important;
     --checkbox-border-checked: var(--base0D) !important;
     --checkbox-background-default: var(--base02) !important;
@@ -184,26 +184,29 @@
     --yellow-300: var(--base0A) !important;
     --__lottieIconColor: var(--base03) !important;
 
-    /*--- Status Icon Recolor (DO NOT DISTURB) - REVERTED ---*/
+    /*--- Status Icon Recolor (DO NOT DISTURB) - Original Discord Color ---*/
+    /* Using direct hex codes to ensure original colors */
     svg[fill^="#f23f43"],
     rect[fill^="#f23f43"] {
-        fill: #f23f43 !important; /* Reverted to original Discord DND color */
+        fill: #f23f43 !important; /* Original Discord DND color */
     }
-    /*--- Status Icon Recolor (IDLE) - REVERTED ---*/
+    /*--- Status Icon Recolor (IDLE) - Original Discord Color ---*/
+    /* Using direct hex codes to ensure original colors */
     svg[fill^="#f0b232"],
     rect[fill^="#f0b232"] {
-        fill: #f0b232 !important; /* Reverted to original Discord Idle color */
+        fill: #f0b232 !important; /* Original Discord Idle color */
     }
-    /*--- Status Icon Recolor (ONLINE) - REVERTED ---*/
+    /*--- Status Icon Recolor (ONLINE) - Original Discord Color ---*/
+    /* Using direct hex codes to ensure original colors */
     path[fill^="#23a55a"],
     svg[fill^="#23a55a"],
     rect[fill^="#23a55a"] {
-        fill: #23a55a !important; /* Reverted to original Discord Online color */
+        fill: #23a55a !important; /* Original Discord Online color */
     }
     /*--- Status Icon Recolor (OFFLINE) ---*/
     svg[fill^="#80848e"],
     rect[fill^="#80848e"] {
-        fill: var(--base03) !important;
+        fill: var(--base03) !important; /* Keeps the base16 offline color */
     }
 
 }
@@ -253,7 +256,7 @@ div[class^="bar__"] {
 
 /*--- Forum Background Recolor ---*/
 .container_f369db {
-    background-color: var(--bg-overlay-2);
+    background-color: var(--bg-overlay-2); /* Uses base01 */
 }
 
 /*--- Sidebar Icon Recolor ---*/
@@ -321,7 +324,7 @@ path[fill^="var(--brand-500)"] {
 path[fill^="currentColor"],
 svg[fill^="currentColor"],
 rect[fill^="currentColor"] {
-    fill: var(--base06) !important;
+    fill: var(--base06) !important; /* Uses base05 */
 }
 
 /*--- Voice Chat Icon Badge Recolor ---*/
@@ -333,12 +336,12 @@ div[class^="iconBadge"] path[d^="M15.16 16.51c-.57.28"] {
 /*--- Nitro Icon Recolor ---*/
 .premiumLabel_e681d1 svg path,
 svg.guildBoostBadge__5dba5 path {
-    fill: var(--base0E) !important;
+    fill: var(--base0E) !important; /* Uses base09 */
 }
 
 /*--- Server Booster Icon Recolor ---*/
 .premiumIcon__5d473 {
-    color: var(--base0F);
+    color: var(--base0F); /* Uses base07 */
 }
 
 /*--- Call Container Recolor ---*/
@@ -346,7 +349,7 @@ svg.guildBoostBadge__5dba5 path {
     background-color: var(--base00);
 }
 .gradientContainer_bfe55a {
-    background-image: var(--base00);
+    background-image: var(--base00); /* This will likely be invisible as base00 is black */
 }
 
 /*--- Store Gradient Recolors ---*/
@@ -363,7 +366,7 @@ svg.guildBoostBadge__5dba5 path {
 }
 
 /*--- Codeblock Syntax Highlighting Recolor ---*/
-
+/* These use base16 colors and should remain the same */
 .hljs-ansi-foreground-red {
     color: var(--base08) !important;
 }
@@ -424,12 +427,12 @@ svg.guildBoostBadge__5dba5 path {
 
 /*--- Visual Refresh Recolor ---*/
 /*--- BIG WORK IN PROGRESS. DISCORD MADE SOME BIG CHANGES. ---*/
+/* Backgrounds here will also use the new dark base colors */
 .visual-refresh {
     div[class^="autocomplete__"] {
         background-color: var(--base02) !important;
     }
-    /* Note: The status icons are recolored using specific hex values in the main block now,
-       which will apply here too, overriding the var() assignments below. */
+    /* Status icons already use fixed hex codes in the main block, which apply here */
     path[fill^="rgba(88, 101, 242, 1)"] {
         fill: var(--base0B) !important;
     }
@@ -481,40 +484,43 @@ svg.guildBoostBadge__5dba5 path {
         background-color: var(--base02) !important;
     }
 
-    /*--- Status Icon Recolor (DO NOT DISTURB) - REVERTED ---*/
+    /*--- Status Icon Recolor (DO NOT DISTURB) - Original Discord Color (Visual Refresh specific selectors) ---*/
+    /* Using direct hex codes to ensure original colors */
     svg[fill^="#d83a42"],
     rect[fill^="#d83a42"],
     path[fill^="#d83a42"],
     svg[fill^="#d83a41"],
     rect[fill^="#d83a41"],
     path[fill^="#d83a41"] {
-        fill: #f23f43 !important; /* Reverted to original Discord DND color */
+        fill: #f23f43 !important; /* Original Discord DND color */
     }
-    /*--- Status Icon Recolor (IDLE) - REVERTED ---*/
+    /*--- Status Icon Recolor (IDLE) - Original Discord Color (Visual Refresh specific selectors) ---*/
+    /* Using direct hex codes to ensure original colors */
     svg[fill^="#ca9654"],
     rect[fill^="#ca9654"],
     path[fill^="#ca9654"],
     svg[fill^="#cc954c"],
     rect[fill^="#cc954c"],
     path[fill^="#cc954c"] {
-        fill: #f0b232 !important; /* Reverted to original Discord Idle color */
+        fill: #f0b232 !important; /* Original Discord Idle color */
     }
-    /*--- Status Icon Recolor (ONLINE) - REVERTED ---*/
+    /*--- Status Icon Recolor (ONLINE) - Original Discord Color (Visual Refresh specific selectors) ---*/
+    /* Using direct hex codes to ensure original colors */
     path[fill^="#43a25a"],
     svg[fill^="#43a25a"],
     rect[fill^="#43a25a"],
     path[fill^="#40a258"],
     svg[fill^="#40a258"],
     rect[fill^="#40a258"] {
-        fill: #23a55a !important; /* Reverted to original Discord Online color */
+        fill: #23a55a !important; /* Original Discord Online color */
     }
-    /*--- Status Icon Recolor (OFFLINE) ---*/
+    /*--- Status Icon Recolor (OFFLINE) - Visual Refresh specific selectors ---*/
     svg[fill^="#83838b"],
     rect[fill^="#83838b"],
     path[fill^="#83838b"],
     svg[fill^="#82838b"],
     rect[fill^="#82838b"],
     path[fill^="#82838b"] {
-        fill: var(--base03) !important;
+        fill: var(--base03) !important; /* Keeps the base16 offline color */
     }
 }
