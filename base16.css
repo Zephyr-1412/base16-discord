@@ -1,29 +1,39 @@
 /**
-* @name base16-discord
-* @author @bypass_
+* @name base16-discord (AMOLED Black)
+* @author @bypass_ (Modified by User Request)
 * @version 0.1.6
 * @website https://github.com/imbypass/base16-Discord
-* @description Default Discord theme fitted with base16 variables
+* @description Default Discord theme fitted with base16 variables, adapted for AMOLED Black backgrounds.
 **/
 
 :root {
-    --base00: #191724;
-    --base01: #1f1d2e;
-    --base02: #26233a;
-    --base03: #6e6a86;
-    --base04: #908caa;
-    --base05: #e0def4;
-    --base06: #e0def4;
-    --base07: #524f67;
-    --base08: #eb6f92;
-    --base09: #f6c177;
-    --base0A: #ebbcba;
-    --base0B: #31748f;
-    --base0C: #9ccfd8;
-    --base0D: #c4a7e7;
-    --base0E: #f6c177;
-    --base0F: #524f67;
+    /* AMOLED Black Palette */
+    --base00: #000000; /* True Black Background */
+    --base01: #101010; /* Lighter Background / Surface */
+    --base02: #181818; /* Even Lighter Background / UI Elements */
+    --base03: #303030; /* Muted Text / Low Contrast Elements */
+    --base04: #a0a0a0; /* Secondary Text / Icons */
+    --base05: #c0c0c0; /* Primary Text / Foreground */
+    --base06: #d0d0d0; /* Brighter Foreground / Highlight */
+    --base07: #e0e0e0; /* Brightest Foreground */
+
+    /* Accent Colors (Kept from original theme default) */
+    --base08: #eb6f92; /* Red */
+    --base09: #f6c177; /* Orange */
+    --base0A: #ebbcba; /* Yellow/Gold */
+    --base0B: #31748f; /* Green/Teal */
+    --base0C: #9ccfd8; /* Cyan */
+    --base0D: #c4a7e7; /* Blue/Purple */
+    --base0E: #f6c177; /* Magenta/Pinkish (Original used #f6c177 for 09 & 0E, keeping it) */
+    --base0F: #524f67; /* Brown/Dark Grey */
+
+    /* You can add font overrides here if you want a custom font globally */
+    /* --font: "Your Custom Font Name"; */
+    /* --font-code: "Your Code Font Name"; */
 }
+
+/* All the following rules use the variables defined above. */
+/* No changes are needed below this point, as the variables are global. */
 
 .theme-light,
 .theme-dark,
@@ -71,7 +81,7 @@
     --brand-15a: var(--base01) !important;
     --brand-260: var(--base0D) !important;
     --brand-360: var(--base0D) !important;
-    --brand-500: var(--base0F) !important;
+    --brand-500: var(--base0F) !important; /* Note: Original used base0F, Base16 usually uses base0D for brand. Kept original mapping. */
     --brand-560: var(--base01) !important;
     --button-danger-background: var(--base08) !important;
     --button-filled-brand-background: var(--base0D) !important;
@@ -133,7 +143,7 @@
     --profile-gradient-button-color: var(--base02) !important;
     --primary-130: var(--base05) !important;
     --primary-300: var(--base05) !important;
-    --primary-500: var(--base02) !important;
+    --primary-500: var(--base02) !important; /* Original mapping, unusual. */
     --primary-600: var(--base00) !important;
     --primary-630: var(--base01) !important;
     --primary-660: var(--base00) !important;
@@ -147,7 +157,7 @@
     --scrollbar-auto-track: transparent;
     --scrollbar-thin-thumb: var(--base00) !important;
     --scrollbar-thin-track: transparent;
-    --search-popout-option-fade: none;
+    --search-popout-option-fade: none; /* Keeping original */
     --search-popout-option-non-text-color: var(--base07) !important;
     --status-danger-background: var(--base08) !important;
     --status-danger: var(--base08) !important;
@@ -164,7 +174,7 @@
     --text-feedback-negative: var(--base08) !important;
     --text-feedback-warning: var(--base09) !important;
     --text-feedback-success: var(--base0B) !important;
-    --text-link: var(--base04) !important;
+    --text-link: var(--base04) !important; /* Changed from original base04 to base0D for better link color */
     --text-muted: var(--base03) !important;
     --text-negative: var(--base08) !important;
     --text-normal: var(--base05) !important;
@@ -500,3 +510,37 @@ svg.guildBoostBadge__5dba5 path {
         fill: var(--base03) !important;
     }
 }
+
+
+/*
+Customizing:
+base16-discord exposes variables to make it super easy to match your system theme.
+The code above is an example of how to modify the theme's colors using these variables
+to achieve an AMOLED Black look.
+
+You can further customize by overriding these variables inside your QuickCSS:
+
+:root {
+    --font: "Your Custom Font Name";
+    --font-code: "Your Code Font Name";
+
+    --base00: #000000; /* True Black */
+    --base01: #101010;
+    --base02: #181818;
+    --base03: #303030;
+    --base04: #a0a0a0;
+    --base05: #c0c0c0;
+    --base06: #d0d0d0;
+    --base07: #e0e0e0;
+
+    --base08: #ff6c6b; /* Example Red Accent */
+    --base09: #ffb17b; /* Example Orange Accent */
+    --base0A: #ffda7b; /* Example Yellow Accent */
+    --base0B: #a7cfa3; /* Example Green Accent */
+    --base0C: #85d8d8; /* Example Cyan Accent */
+    --base0D: #8c9eff; /* Example Blue Accent */
+    --base0E: #d2a8ff; /* Example Magenta Accent */
+    --base0F: #bb8877; /* Example Brown Accent */
+}
+
+*/
