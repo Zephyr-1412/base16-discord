@@ -183,6 +183,29 @@
     --yellow-360: var(--base0A) !important;
     --yellow-300: var(--base0A) !important;
     --__lottieIconColor: var(--base03) !important;
+
+    /*--- Status Icon Recolor (DO NOT DISTURB) - REVERTED ---*/
+    svg[fill^="#f23f43"],
+    rect[fill^="#f23f43"] {
+        fill: #f23f43 !important; /* Reverted to original Discord DND color */
+    }
+    /*--- Status Icon Recolor (IDLE) - REVERTED ---*/
+    svg[fill^="#f0b232"],
+    rect[fill^="#f0b232"] {
+        fill: #f0b232 !important; /* Reverted to original Discord Idle color */
+    }
+    /*--- Status Icon Recolor (ONLINE) - REVERTED ---*/
+    path[fill^="#23a55a"],
+    svg[fill^="#23a55a"],
+    rect[fill^="#23a55a"] {
+        fill: #23a55a !important; /* Reverted to original Discord Online color */
+    }
+    /*--- Status Icon Recolor (OFFLINE) ---*/
+    svg[fill^="#80848e"],
+    rect[fill^="#80848e"] {
+        fill: var(--base03) !important;
+    }
+
 }
 
 /*--- Default Folder Color Recolor ---*/
@@ -280,26 +303,19 @@ path[fill^="var(--brand-500)"] {
 }
 
 /*--- Status Icon Recolor (DO NOT DISTURB) ---*/
-svg[fill^="#f23f43"],
-rect[fill^="#f23f43"] {
-    fill: var(--status-danger) !important;
-}
+/* Moved into .theme-dark block above to apply to all themes */
+
+
 /*--- Status Icon Recolor (IDLE) ---*/
-svg[fill^="#f0b232"],
-rect[fill^="#f0b232"] {
-    fill: var(--status-warning) !important;
-}
+/* Moved into .theme-dark block above to apply to all themes */
+
+
 /*--- Status Icon Recolor (ONLINE) ---*/
-path[fill^="#23a55a"],
-svg[fill^="#23a55a"],
-rect[fill^="#23a55a"] {
-    fill: var(--status-positive) !important;
-}
+/* Moved into .theme-dark block above to apply to all themes */
+
 /*--- Status Icon Recolor (OFFLINE) ---*/
-svg[fill^="#80848e"],
-rect[fill^="#80848e"] {
-    fill: var(--base03) !important;
-}
+/* Moved into .theme-dark block above to apply to all themes */
+
 
 /*--- Default Color Swap ---*/
 path[fill^="currentColor"],
@@ -412,6 +428,8 @@ svg.guildBoostBadge__5dba5 path {
     div[class^="autocomplete__"] {
         background-color: var(--base02) !important;
     }
+    /* Note: The status icons are recolored using specific hex values in the main block now,
+       which will apply here too, overriding the var() assignments below. */
     path[fill^="rgba(88, 101, 242, 1)"] {
         fill: var(--base0B) !important;
     }
@@ -463,32 +481,32 @@ svg.guildBoostBadge__5dba5 path {
         background-color: var(--base02) !important;
     }
 
-    /*--- Status Icon Recolor (DO NOT DISTURB) ---*/
+    /*--- Status Icon Recolor (DO NOT DISTURB) - REVERTED ---*/
     svg[fill^="#d83a42"],
     rect[fill^="#d83a42"],
     path[fill^="#d83a42"],
     svg[fill^="#d83a41"],
     rect[fill^="#d83a41"],
     path[fill^="#d83a41"] {
-        fill: var(--status-danger) !important;
+        fill: #f23f43 !important; /* Reverted to original Discord DND color */
     }
-    /*--- Status Icon Recolor (IDLE) ---*/
+    /*--- Status Icon Recolor (IDLE) - REVERTED ---*/
     svg[fill^="#ca9654"],
     rect[fill^="#ca9654"],
     path[fill^="#ca9654"],
     svg[fill^="#cc954c"],
     rect[fill^="#cc954c"],
     path[fill^="#cc954c"] {
-        fill: var(--status-warning) !important;
+        fill: #f0b232 !important; /* Reverted to original Discord Idle color */
     }
-    /*--- Status Icon Recolor (ONLINE) ---*/
+    /*--- Status Icon Recolor (ONLINE) - REVERTED ---*/
     path[fill^="#43a25a"],
     svg[fill^="#43a25a"],
     rect[fill^="#43a25a"],
     path[fill^="#40a258"],
     svg[fill^="#40a258"],
     rect[fill^="#40a258"] {
-        fill: var(--status-positive) !important;
+        fill: #23a55a !important; /* Reverted to original Discord Online color */
     }
     /*--- Status Icon Recolor (OFFLINE) ---*/
     svg[fill^="#83838b"],
