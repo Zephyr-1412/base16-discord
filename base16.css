@@ -1,24 +1,24 @@
 /**
-* @name base16-discord-amoled-trueblack
+* @name base16-discord-amoled-trueblack-fullstatus
 * @author @bypass_ (modified by User + AI)
-* @version 0.3.0
+* @version 0.4.0
 * @website https://github.com/imbypass/base16-Discord
-* @description Default Discord theme fitted with base16 variables, optimized for AMOLED displays with true black backgrounds.
+* @description Default Discord theme fitted with base16 variables, optimized for AMOLED displays with true black backgrounds and original Discord status colors.
 **/
 
 :root {
     --base00: #000000; /* True Black Primary Background */
     --base01: #000000; /* True Black Secondary Background */
     --base02: #000000; /* True Black Tertiary Background / Accent */
-    --base03: #6e6a86; /* Text Muted, Borders (Still provides some separation) */
+    --base03: #6e6a86; /* Text Muted, Borders (Provides some subtle separation) */
     --base04: #908caa; /* Text Secondary, Icons */
     --base05: #e0def4; /* Text Primary, Foreground */
     --base06: #e0def4; /* Text Primary, Foreground (Duplicate) */
     --base07: #524f67; /* Text Brand, Default Folder */
-    --base08: #eb6f92; /* Red/Danger */
-    --base09: #f6c177; /* Orange/Warning */
+    --base08: #eb6f92; /* Red/Danger (Used for some base16 mappings, but status icons use original Discord colors below) */
+    --base09: #f6c177; /* Orange/Warning (Used for some base16 mappings, but status icons use original Discord colors below) */
     --base0A: #ebbcba; /* Yellow/Warning (Alt) */
-    --base0B: #31748f; /* Green/Success */
+    --base0B: #31748f; /* Green/Success (Used for some base16 mappings, but status icons use original Discord colors below) */
     --base0C: #9ccfd8; /* Cyan */
     --base0D: #c4a7e7; /* Blue/Brand */
     --base0E: #f6c177; /* Magenta (Duplicate of Orange) */
@@ -76,7 +76,7 @@
     --button-danger-background: var(--base08) !important;
     --button-filled-brand-background: var(--base0D) !important;
     --button-filled-brand-background-hover: var(--base03) !important; /* Retains subtle separation */
-    --button-filled-brand-text: var(--base00) !important; /* Text on brand button will be black - may be invisible. Consider changing this? Keep as is for now to match Base16 variable use.*/
+    --button-filled-brand-text: var(--base00) !important; /* Text on brand button will be black - may be invisible depending on button color */
     --button-filled-brand-text-hover: var(--base05) !important; /* Text on brand button hover */
     --button-outline-positive-border: var(--base0B) !important;
     --button-outline-danger-background-hover: var(--base08) !important;
@@ -143,9 +143,10 @@
     --red-500: var(--base08) !important;
     --red-630: var(--base08) !important;
     --red: var(--base08) !important;
-    --scrollbar-auto-thumb: var(--base00) !important; /* Will be true black (may hide scrollbar) */
+    /* Scrollbar Thumb - Changed to a visible grey */
+    --scrollbar-auto-thumb: #80848e !important; /* Original Discord Offline/Grey color for visibility */
     --scrollbar-auto-track: transparent;
-    --scrollbar-thin-thumb: var(--base00) !important; /* Will be true black (may hide scrollbar) */
+    --scrollbar-thin-thumb: #80848e !important; /* Original Discord Offline/Grey color for visibility */
     --scrollbar-thin-track: transparent;
     --search-popout-option-fade: none;
     --search-popout-option-non-text-color: var(--base07) !important;
@@ -185,35 +186,32 @@
     --__lottieIconColor: var(--base03) !important; /* Retains subtle separation */
 
     /*--- Status Icon Recolor (DO NOT DISTURB) - Original Discord Color ---*/
-    /* Using direct hex codes to ensure original colors */
     svg[fill^="#f23f43"],
     rect[fill^="#f23f43"] {
         fill: #f23f43 !important; /* Original Discord DND color */
     }
     /*--- Status Icon Recolor (IDLE) - Original Discord Color ---*/
-    /* Using direct hex codes to ensure original colors */
     svg[fill^="#f0b232"],
     rect[fill^="#f0b232"] {
         fill: #f0b232 !important; /* Original Discord Idle color */
     }
     /*--- Status Icon Recolor (ONLINE) - Original Discord Color ---*/
-    /* Using direct hex codes to ensure original colors */
     path[fill^="#23a55a"],
     svg[fill^="#23a55a"],
     rect[fill^="#23a55a"] {
         fill: #23a55a !important; /* Original Discord Online color */
     }
-    /*--- Status Icon Recolor (OFFLINE) ---*/
+    /*--- Status Icon Recolor (OFFLINE) - Original Discord Color ---*/
     svg[fill^="#80848e"],
     rect[fill^="#80848e"] {
-        fill: var(--base03) !important; /* Keeps the base16 offline color */
+        fill: #80848e !important; /* Original Discord Offline color */
     }
 
 }
 
 /*--- Default Folder Color Recolor ---*/
 .default__459fb {
-    background-color: var(--base07) !important;
+    background-color: var(--base07) !important; /* Still uses base16 color */
 }
 
 /*--- Add Friend Button Text Recolor ---*/
@@ -305,19 +303,8 @@ path[fill^="var(--brand-500)"] {
     display: none;
 }
 
-/*--- Status Icon Recolor (DO NOT DISTURB) ---*/
-/* Handled in the main .theme-dark block above */
-
-
-/*--- Status Icon Recolor (IDLE) ---*/
-/* Handled in the main .theme-dark block above */
-
-
-/*--- Status Icon Recolor (ONLINE) ---*/
-/* Handled in the main .theme-dark block above */
-
-/*--- Status Icon Recolor (OFFLINE) ---*/
-/* Handled in the main .theme-dark block above */
+/*--- Status Icon Recolor (DO NOT DISTURB, IDLE, ONLINE, OFFLINE) ---*/
+/* Handled in the main .theme-dark block above using original hex codes */
 
 
 /*--- Default Color Swap ---*/
@@ -426,13 +413,12 @@ svg.guildBoostBadge__5dba5 path {
 }
 
 /*--- Visual Refresh Recolor ---*/
-/*--- BIG WORK IN PROGRESS. DISCORD MADE SOME BIG CHANGES. ---*/
 /* Backgrounds here will also use the new true black base colors */
 .visual-refresh {
     div[class^="autocomplete__"] {
         background-color: var(--base02) !important; /* Will be true black */
     }
-    /* Status icons already use fixed hex codes in the main block, which apply here */
+    /* Status icons are handled in the main block now using original hex codes */
     path[fill^="rgba(88, 101, 242, 1)"] {
         fill: var(--base0B) !important;
     }
@@ -477,15 +463,15 @@ svg.guildBoostBadge__5dba5 path {
 
     .experimentButton_e131a9.buttonColor_e131a9.buttonActive_e131a9 {
         background-color: var(--base0B) !important;
-        color: var(--base00) !important; /* Text will be true black (may be invisible on true black background) */
+        color: var(--base00) !important; /* Text will be true black (may be invisible) */
     }
 
     .selectedBackground_e681d1 {
         background-color: var(--base02) !important; /* Will be true black */
     }
 
-    /*--- Status Icon Recolor (DO NOT DISTURB) - Original Discord Color (Visual Refresh specific selectors) ---*/
-    /* Using direct hex codes to ensure original colors */
+    /*--- Status Icon Recolor (DO NOT DISTURB, IDLE, ONLINE, OFFLINE) - Original Discord Color (Visual Refresh specific selectors) ---*/
+    /* Ensure these match the hex codes set in the main block */
     svg[fill^="#d83a42"],
     rect[fill^="#d83a42"],
     path[fill^="#d83a42"],
@@ -494,8 +480,6 @@ svg.guildBoostBadge__5dba5 path {
     path[fill^="#d83a41"] {
         fill: #f23f43 !important; /* Original Discord DND color */
     }
-    /*--- Status Icon Recolor (IDLE) - Original Discord Color (Visual Refresh specific selectors) ---*/
-    /* Using direct hex codes to ensure original colors */
     svg[fill^="#ca9654"],
     rect[fill^="#ca9454"], /* Corrected potential typo based on common Discord idle hex */
     path[fill^="#ca9654"],
@@ -504,8 +488,6 @@ svg.guildBoostBadge__5dba5 path {
     path[fill^="#cc954c"] {
         fill: #f0b232 !important; /* Original Discord Idle color */
     }
-    /*--- Status Icon Recolor (ONLINE) - Original Discord Color (Visual Refresh specific selectors) ---*/
-    /* Using direct hex codes to ensure original colors */
     path[fill^="#43a25a"],
     svg[fill^="#43a25a"],
     rect[fill^="#43a25a"],
@@ -514,13 +496,12 @@ svg.guildBoostBadge__5dba5 path {
     rect[fill^="#40a258"] {
         fill: #23a55a !important; /* Original Discord Online color */
     }
-    /*--- Status Icon Recolor (OFFLINE) - Visual Refresh specific selectors ---*/
     svg[fill^="#83838b"],
     rect[fill^="#83838b"],
     path[fill^="#83838b"],
     svg[fill^="#82838b"],
     rect[fill^="#82838b"],
     path[fill^="#82838b"] {
-        fill: var(--base03) !important; /* Keeps the base16 offline color */
+        fill: #80848e !important; /* Original Discord Offline color */
     }
 }
