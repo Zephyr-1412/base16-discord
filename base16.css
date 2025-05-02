@@ -1,9 +1,9 @@
 /**
-* @name base16-discord-amoled-trueblack-fullstatus
-* @author @bypass_ (modified by User + AI)
-* @version 0.4.0
+* @name base16-discord-amoled-trueblack-discordgreen
+* @author @bypass_ (modified by User)
+* @version 0.6.0
 * @website https://github.com/imbypass/base16-Discord
-* @description Default Discord theme fitted with base16 variables, optimized for AMOLED displays with true black backgrounds and original Discord status colors.
+* @description Default Discord theme fitted with base16 variables, optimized for AMOLED displays with true black backgrounds, original discord status colors, and Discord green replacing base0B usage.
 **/
 
 :root {
@@ -15,10 +15,10 @@
     --base05: #e0def4; /* Text Primary, Foreground */
     --base06: #e0def4; /* Text Primary, Foreground (Duplicate) */
     --base07: #524f67; /* Text Brand, Default Folder */
-    --base08: #eb6f92; /* Red/Danger (Used for some base16 mappings, but status icons use original Discord colors below) */
-    --base09: #f6c177; /* Orange/Warning (Used for some base16 mappings, but status icons use original Discord colors below) */
+    --base08: #eb6f92; /* Red/Danger (Used for some base16 mappings) */
+    --base09: #f6c177; /* Orange/Warning (Used for some base16 mappings) */
     --base0A: #ebbcba; /* Yellow/Warning (Alt) */
-    --base0B: #31748f; /* Green/Success (Used for some base16 mappings, but status icons use original Discord colors below) */
+    --base0B: #23a55a; /* Replaced #31748f with Original Discord Green */
     --base0C: #9ccfd8; /* Cyan */
     --base0D: #c4a7e7; /* Blue/Brand */
     --base0E: #f6c177; /* Magenta (Duplicate of Orange) */
@@ -64,7 +64,7 @@
     --bg-surface-raised: var(--base02) !important; /* Will be true black */
     --bg-surface-overlay: var(--base00) !important; /* Will be true black */
     --black: var(--base00) !important; /* Will be true black */
-    --blurple-50: var(--base0B) !important;
+    --blurple-50: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --border-faint: var(--base02) !important; /* Will be true black (may hide some borders) */
     --brand-05a: var(--base01) !important; /* Will be true black */
     --brand-10a: var(--base01) !important; /* Will be true black */
@@ -78,10 +78,10 @@
     --button-filled-brand-background-hover: var(--base03) !important; /* Retains subtle separation */
     --button-filled-brand-text: var(--base00) !important; /* Text on brand button will be black - may be invisible depending on button color */
     --button-filled-brand-text-hover: var(--base05) !important; /* Text on brand button hover */
-    --button-outline-positive-border: var(--base0B) !important;
+    --button-outline-positive-border: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --button-outline-danger-background-hover: var(--base08) !important;
     --button-outline-danger-border-hover: var(--base08) !important;
-    --button-positive-background: var(--base0B) !important;
+    --button-positive-background: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --button-positive-background-hover: var(--base03) !important; /* Retains subtle separation */
     --button-secondary-background: var(--base02) !important; /* Will be true black */
     --button-secondary-background-hover: var(--base03) !important; /* Retains subtle separation */
@@ -105,9 +105,9 @@
     --font-display: var(--font, "gg sans") !important;
     --font-headline: var(--font, "gg sans") !important;
     --font-primary: var(--font, "gg sans") !important;
-    --green-330: var(--base0B) !important;
-    --green-360: var(--base0B) !important;
-    --green-300: var(--base0B) !important;
+    --green-330: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
+    --green-360: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
+    --green-300: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --header-primary: var(--base04) !important;
     --header-secondary: var(--base04) !important;
     --home-background: var(--base00) !important; /* Will be true black */
@@ -126,10 +126,10 @@
     --message-reacted-text: var(--base05) !important;
     --modal-background: var(--base01) !important; /* Will be true black */
     --modal-footer-background: var(--base00) !important; /* Will be true black */
-    --notice-background-positive: var(--base0B) !important;
+    --notice-background-positive: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --notice-text-positive: var(--base01) !important; /* Will be true black (may be invisible) */
     --plum-23: var(--base02) !important; /* Will be true black */
-    --polls-victor-fill: var(--base0B) !important;
+    --polls-victor-fill: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --profile-gradient-button-color: var(--base02) !important; /* Will be true black */
     --primary-130: var(--base05) !important;
     --primary-300: var(--base05) !important;
@@ -151,25 +151,25 @@
     --search-popout-option-fade: none;
     --search-popout-option-non-text-color: var(--base07) !important;
     --status-danger-background: var(--base08) !important;
-    --status-danger: var(--base08) !important;
-    --status-negative: var(--base08) !important;
-    --status-positive-background: var(--base0B) !important;
-    --status-positive-text: var(--base0B) !important;
-    --status-positive: var(--base0B) !important;
-    --status-success: var(--base0B) !important;
+    --status-danger: var(--base08) !important; /* This now uses the base16 red */
+    --status-negative: var(--base08) !important; /* This now uses the base16 red */
+    --status-positive-background: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
+    --status-positive-text: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
+    --status-positive: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
+    --status-success: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --status-warning-background: var(--base03) !important; /* Retains subtle separation */
-    --status-warning: var(--base09) !important;
+    --status-warning: var(--base09) !important; /* This now uses the base16 orange */
     --teal-430: var(--base0C) !important;
     --text-brand: var(--base07) !important;
-    --text-feedback-positive: var(--base0B) !important;
+    --text-feedback-positive: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --text-feedback-negative: var(--base08) !important;
     --text-feedback-warning: var(--base09) !important;
-    --text-feedback-success: var(--base0B) !important;
+    --text-feedback-success: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --text-link: var(--base04) !important;
     --text-muted: var(--base03) !important; /* Retains subtle separation */
     --text-negative: var(--base08) !important;
     --text-normal: var(--base05) !important;
-    --text-positive: var(--base0B) !important;
+    --text-positive: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     --text-primary: var(--base05) !important;
     --text-secondary: var(--base04) !important;
     --text-tertiary: var(--base03) !important; /* Retains subtle separation */
@@ -195,11 +195,12 @@
     rect[fill^="#f0b232"] {
         fill: #f0b232 !important; /* Original Discord Idle color */
     }
-    /*--- Status Icon Recolor (ONLINE) - Original Discord Color ---*/
-    path[fill^="#23a55a"],
-    svg[fill^="#23a55a"],
-    rect[fill^="#23a55a"] {
-        fill: #23a55a !important; /* Original Discord Online color */
+    /*--- Status Icon Recolor (ONLINE) - Original Discord Green ---*/
+    /* Targeting the specific selectors that were previously set to the OLD base0B value or Discord Green */
+    path[fill^="#23a55a"], /* Original Discord Green */
+    svg[fill^="#23a55a"], /* Original Discord Green */
+    rect[fill^="#23a55a"] { /* Original Discord Green */
+        fill: #23a55a !important; /* Set to original Discord Green */
     }
     /*--- Status Icon Recolor (OFFLINE) - Original Discord Color ---*/
     svg[fill^="#80848e"],
@@ -241,10 +242,10 @@ div[class^="bar__"] {
 }
 /*--- Voice Bar Text Recolor ---*/
 .barText__7aaec {
-    color: var(--base0B) !important;
+    color: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
 }
 .unreadIcon__7aaec {
-    color: var(--base0B) !important;
+    color: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
 }
 
 /*--- Mentions Bar Text Recolor ---*/
@@ -273,6 +274,8 @@ div.folderIconWrapper__48112 {
 }
 
 /*--- Voice Chat Action Icon Recolor ---*/
+/* This section targets the *original* Discord Blurple fill (rgb(88,101,242))
+   and sets it to base05. Keep this as is unless you want to change these icons too. */
 path[fill^="rgb(88,101,242)"],
 path[stroke^="rgb(88,101,242)"] {
     fill: var(--base05) !important;
@@ -292,10 +295,10 @@ div[class^="actionButtons"] [class^="button"] [class*="buttonColor_"] {
 }
 /* --- Checkbox Recolor (ON) --- */
 .checked__87bf1 {
-    background-color: var(--base0B) !important;
+    background-color: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
 }
 path[fill^="var(--brand-500)"] {
-    fill: var(--base0B) !important;
+    fill: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
 }
 
 /* --- Secure Lock Icon Recolor --- */
@@ -304,14 +307,16 @@ path[fill^="var(--brand-500)"] {
 }
 
 /*--- Status Icon Recolor (DO NOT DISTURB, IDLE, ONLINE, OFFLINE) ---*/
-/* Handled in the main .theme-dark block above using original hex codes */
+/* Handled in the main .theme-dark block above using original hex codes and the updated --base0B color */
 
 
 /*--- Default Color Swap ---*/
+/* This generic rule is often problematic and might override more specific rules.
+   It targets elements with fill: currentColor. Base06 is the same as Base05 (#e0def4). */
 path[fill^="currentColor"],
 svg[fill^="currentColor"],
 rect[fill^="currentColor"] {
-    fill: var(--base06) !important; /* Uses base05 */
+    fill: var(--base06) !important; /* Uses base05 (#e0def4) */
 }
 
 /*--- Voice Chat Icon Badge Recolor ---*/
@@ -353,12 +358,12 @@ svg.guildBoostBadge__5dba5 path {
 }
 
 /*--- Codeblock Syntax Highlighting Recolor ---*/
-/* These use base16 colors and should remain the same */
+/* These use base16 colors and should remain the same, now using the updated base0B value */
 .hljs-ansi-foreground-red {
     color: var(--base08) !important;
 }
 .hljs-ansi-foreground-green {
-    color: var(--base0B) !important;
+    color: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
 }
 .hljs-ansi-foreground-yellow {
     color: var(--base0A) !important;
@@ -388,10 +393,10 @@ svg.guildBoostBadge__5dba5 path {
     color: var(--base0D) !important;
 }
 .hljs-selector-pseudo {
-    color: var(--base0B) !important;
+    color: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
 }
 .hljs-section {
-    color: var(--base0B) !important;
+    color: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
 }
 .hljs-keyword {
     color: var(--base08) !important;
@@ -406,21 +411,22 @@ svg.guildBoostBadge__5dba5 path {
     color: var(--base09) !important;
 }
 .hljs-string {
-    color: var(--base0B) !important;
+    color: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
 }
 .hljs-title {
     color: var(--base0E) !important;
 }
 
 /*--- Visual Refresh Recolor ---*/
-/* Backgrounds here will also use the new true black base colors */
+/* Backgrounds here will also use the new true black base colors.
+   Status icons are handled by the general selectors above. */
 .visual-refresh {
     div[class^="autocomplete__"] {
         background-color: var(--base02) !important; /* Will be true black */
     }
-    /* Status icons are handled in the main block now using original hex codes */
+    /* Status icons use fixed hex codes set in the main block */
     path[fill^="rgba(88, 101, 242, 1)"] {
-        fill: var(--base0B) !important;
+        fill: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
     }
     div[class^="topicsPillContainer"] {
         --bg-overlay-2: var(--base02) !important; /* Will be true black */
@@ -462,7 +468,7 @@ svg.guildBoostBadge__5dba5 path {
     }
 
     .experimentButton_e131a9.buttonColor_e131a9.buttonActive_e131a9 {
-        background-color: var(--base0B) !important;
+        background-color: var(--base0B) !important; /* Uses new --base0B (#23a55a) */
         color: var(--base00) !important; /* Text will be true black (may be invisible) */
     }
 
@@ -470,8 +476,7 @@ svg.guildBoostBadge__5dba5 path {
         background-color: var(--base02) !important; /* Will be true black */
     }
 
-    /*--- Status Icon Recolor (DO NOT DISTURB, IDLE, ONLINE, OFFLINE) - Original Discord Color (Visual Refresh specific selectors) ---*/
-    /* Ensure these match the hex codes set in the main block */
+    /*--- Status Icon Recolor (DO NOT DISTURB) - Original Discord Color (Visual Refresh specific selectors) ---*/
     svg[fill^="#d83a42"],
     rect[fill^="#d83a42"],
     path[fill^="#d83a42"],
@@ -480,6 +485,7 @@ svg.guildBoostBadge__5dba5 path {
     path[fill^="#d83a41"] {
         fill: #f23f43 !important; /* Original Discord DND color */
     }
+    /*--- Status Icon Recolor (IDLE) - Original Discord Color (Visual Refresh specific selectors) ---*/
     svg[fill^="#ca9654"],
     rect[fill^="#ca9454"], /* Corrected potential typo based on common Discord idle hex */
     path[fill^="#ca9654"],
@@ -488,14 +494,17 @@ svg.guildBoostBadge__5dba5 path {
     path[fill^="#cc954c"] {
         fill: #f0b232 !important; /* Original Discord Idle color */
     }
-    path[fill^="#43a25a"],
-    svg[fill^="#43a25a"],
-    rect[fill^="#43a25a"],
-    path[fill^="#40a258"],
-    svg[fill^="#40a258"],
-    rect[fill^="#40a258"] {
-        fill: #23a55a !important; /* Original Discord Online color */
+    /*--- Status Icon Recolor (ONLINE) - Original Discord Green (Visual Refresh specific selectors) ---*/
+    /* Targeting the specific selectors that were previously set to the OLD base0B value or Discord Green */
+    path[fill^="#43a25a"], /* Original Discord Green */
+    svg[fill^="#43a25a"], /* Original Discord Green */
+    rect[fill^="#43a25a"], /* Original Discord Green */
+    path[fill^="#40a258"], /* Original Discord Green (Alt) */
+    svg[fill^="#40a258"], /* Original Discord Green (Alt) */
+    rect[fill^="#40a258"] { /* Original Discord Green (Alt) */
+        fill: #23a55a !important; /* Set to original Discord Green */
     }
+    /*--- Status Icon Recolor (OFFLINE) - Original Discord Color (Visual Refresh specific selectors) ---*/
     svg[fill^="#83838b"],
     rect[fill^="#83838b"],
     path[fill^="#83838b"],
