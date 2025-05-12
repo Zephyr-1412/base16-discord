@@ -1,8 +1,8 @@
 /**
- * @name system24
- * @description a tui-like discord theme.
- * @author refact0r
- * @version 2.0.0
+ * @name system24-modified
+ * @description a tui-like discord theme with default elements restored.
+ * @author refact0r (modified by user request)
+ * @version 2.0.1
  * @invite nz87hXyvcy
  * @website https://github.com/refact0r/system24
  * @source https://github.com/refact0r/system24/blob/master/theme/system24.theme.css
@@ -15,33 +15,33 @@
 
 body {
     /* font, change to '' for default discord font */
-    --font: 'DM Mono'; /* change to '' for default discord font */
-    --code-font: 'DM Mono'; /* change to '' for default discord font */
-    font-weight: 300; /* text font weight. 300 is light, 400 is normal. DOES NOT AFFECT BOLD TEXT */
-    letter-spacing: -0.05ch; /* decreases letter spacing for better readability. recommended on monospace fonts.*/
+    --font: ''; /* [CHANGED] Reverted to default Discord font */
+    --code-font: ''; /* [CHANGED] Reverted to default Discord code font */
+    font-weight: 400; /* [CHANGED] text font weight. Reverted to default (400) */
+    letter-spacing: 0; /* [CHANGED] decreases letter spacing for better readability. Reverted to default (0) */
 
-    /* sizes */
+    /* sizes (Kept from System24) */
     --gap: 12px; /* spacing between panels */
     --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
     --border-thickness: 2px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
     --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
 
-    /* animation/transition options */
+    /* animation/transition options (Kept from System24) */
     --animations: on; /* off: disable animations/transitions, on: enable animations/transitions */
     --list-item-transition: 0.2s ease; /* transition for list items */
     --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
 
-    /* top bar options */
+    /* top bar options (Kept from System24 for layout) */
     --top-bar-height: var(--gap); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
     --top-bar-button-position: titlebar; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
     --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
     --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
 
-    /* window controls */
+    /* window controls (Kept from System24) */
     --custom-window-controls: off; /* off: default window controls, on: custom window controls */
     --window-control-size: 14px; /* size of custom window controls */
 
-    /* dms button options */
+    /* dms button options (Kept from System24 - can be customized independently) */
     --custom-dms-icon: off; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
     --dms-icon-svg-url: url(''); /* icon svg url. MUST BE A SVG. */
     --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
@@ -52,11 +52,11 @@ body {
     --dms-background-image-size: cover; /* size of the background image (css background-size property) */
     --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
 
-    /* background image options */
+    /* background image options (Kept from System24) */
     --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
     --background-image-url: url(''); /* url of the background image */
 
-    /* transparency/blur options */
+    /* transparency/blur options (Kept from System24) */
     /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
     --transparency-tweaks: off; /* off: no changes, on: remove some elements for better transparency */
     --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
@@ -65,27 +65,27 @@ body {
     --bg-floating: var(--bg-3); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
 
     /* other options */
-    --small-user-panel: on; /* off: default user panel, on: smaller user panel like in old discord */
+    --small-user-panel: off; /* [CHANGED] Reverted to default user panel */
 
     /* unrounding options */
-    --unrounding: on; /* off: default, on: remove rounded corners from panels */
+    --unrounding: off; /* [CHANGED] Reverted to default rounded corners */
 
     /* styling options */
-    --custom-spotify-bar: on; /* off: default, on: custom text-like spotify progress bar */
-    --ascii-titles: on; /* off: default, on: use ascii font for titles at the start of a channel */
-    --ascii-loader: system24; /* off: default, system24: use system24 ascii loader, cats: use cats loader */
+    --custom-spotify-bar: off; /* [CHANGED] Reverted to default spotify bar */
+    --ascii-titles: off; /* [CHANGED] Reverted to default titles */
+    --ascii-loader: off; /* [CHANGED] Reverted to default loader */
 
     /* panel labels */
-    --panel-labels: on; /* off: default, on: add labels to panels */
-    --label-color: var(--text-muted); /* color of labels */
-    --label-font-weight: 500; /* font weight of labels */
+    --panel-labels: off; /* [CHANGED] Reverted to default (no labels) */
+    --label-color: var(--text-muted); /* color of labels (kept for reference) */
+    --label-font-weight: 500; /* font weight of labels (kept for reference) */
 }
 
 /* color options */
 :root {
-    --colors: on; /* off: discord default colors, on: midnight custom colors */
+    --colors: on; /* off: discord default colors, on: midnight custom colors (Kept ON to use System24 base palette, but specific elements reverted below) */
 
-    /* text colors */
+    /* text colors (Kept from System24) */
     --text-0: var(--bg-4); /* text on colored elements */
     --text-1: oklch(95% 0 0); /* other normally white text */
     --text-2: oklch(85% 0 0); /* headings and important text */
@@ -93,7 +93,7 @@ body {
     --text-4: oklch(60% 0 0); /* icon buttons and channels */
     --text-5: oklch(40% 0 0); /* muted channels/chats and timestamps */
 
-    /* background and dark colors */
+    /* background and dark colors (Kept from System24) */
     --bg-1: oklch(31% 0 0); /* dark buttons when clicked */
     --bg-2: oklch(27% 0 0); /* dark buttons */
     --bg-3: oklch(23% 0 0); /* spacing, secondary elements */
@@ -104,31 +104,31 @@ body {
     --message-hover: var(--hover); /* messages when hovered */
 
     /* accent colors */
-    --accent-1: var(--purple-1); /* links and other accent text */
-    --accent-2: var(--purple-2); /* small accent elements */
-    --accent-3: var(--purple-3); /* accent buttons */
-    --accent-4: var(--purple-3); /* [CHANGED] accent buttons when hovered - now same as base color to remove hover color change */
-    --accent-5: var(--purple-5); /* accent buttons when clicked */
-    --accent-new: var(--red-2); /* stuff that's normally red like mute/deafen buttons */
-    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
-    --mention-hover: var(--mention); /* [CHANGED] background of messages that mention you when hovered - now same as base mention bg */
-    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
-    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
+    --accent-1: var(--blue-2); /* [CHANGED] links and other accent text - Changed from Purple to Blue */
+    --accent-2: var(--blue-2); /* [CHANGED] small accent elements - Changed from Purple to Blue (consistency with accent-1) */
+    --accent-3: var(--blue-3); /* [CHANGED] accent buttons - Changed from Purple to Blue */
+    --accent-4: var(--blue-3); /* [CHANGED] accent buttons when hovered - Changed from Purple to Blue (matches base accent button, no hover color change) */
+    --accent-5: var(--blue-5); /* [CHANGED] accent buttons when clicked - Changed from Purple to Blue */
+    --accent-new: #f04747;     /* [CHANGED] stuff that's normally red like mute/deafen buttons - Reverted to Discord red */
+    --mention: rgba(250, 166, 26, 0.07); /* [CHANGED] background of messages that mention you - Reverted towards default yellow highlight */
+    --mention-hover: rgba(250, 166, 26, 0.15); /* [CHANGED] background of messages that mention you when hovered - Reverted towards default yellow highlight hover */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you (Kept System24 style) */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered (Kept System24 style) */
 
     /* status indicator colors */
-    --online: var(--green-2); /* change to #40a258 for default */
-    --dnd: var(--red-2); /* change to #d83a41 for default */
-    --idle: var(--yellow-2); /* change to #cc954c for default */
-    --streaming: var(--purple-2); /* change to ##9147ff for default */
-    --offline: var(--text-4); /* change to #82838b for default offline color */
+    --online: #40a258; /* [CHANGED] Reverted to near-default green */
+    --dnd: #d83a41; /* [CHANGED] Reverted to near-default red */
+    --idle: #cc954c; /* [CHANGED] Reverted to near-default yellow */
+    --streaming: #9147ff; /* [CHANGED] Reverted to default Twitch purple */
+    --offline: #82838b; /* [CHANGED] Reverted to near-default offline gray */
 
-    /* border colors */
+    /* border colors (Kept from System24, but hover reverted) */
     --border-light: var(--hover); /* general light border color */
     --border: var(--active); /* general normal border color */
     --border-hover: var(--border); /* [CHANGED] border color of panels when hovered - now uses the neutral border color */
     --button-border: hsl(220, 0%, 100%, 0.1); /* neutral border color of buttons */
 
-    /* base colors */
+    /* base colors (Kept from System24 for reference/potential use) */
     --red-1: oklch(75% 0.13 0);
     --red-2: oklch(70% 0.13 0);
     --red-3: oklch(65% 0.13 0);
@@ -158,4 +158,32 @@ body {
     --purple-3: oklch(65% 0.12 310);
     --purple-4: oklch(60% 0.12 310);
     --purple-5: oklch(55% 0.12 310);
+}
+
+/* --- ADDED CSS TO RESET SPECIFIC ELEMENTS --- */
+
+/* Reset Scrollbars to Default */
+*::-webkit-scrollbar,
+.scroller::-webkit-scrollbar { /* Target general and specific scrollers */
+    width: unset !important;
+    height: unset !important;
+}
+
+*::-webkit-scrollbar-thumb,
+.scroller::-webkit-scrollbar-thumb {
+    background-color: unset !important;
+    border: unset !important;
+    border-radius: unset !important;
+}
+
+*::-webkit-scrollbar-track,
+.scroller::-webkit-scrollbar-track {
+    background-color: unset !important;
+    border: unset !important;
+    border-radius: unset !important;
+}
+
+/* Optional: Reset scrollbar corner if needed */
+*::-webkit-scrollbar-corner {
+    background-color: unset !important;
 }
