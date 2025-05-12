@@ -1,17 +1,17 @@
 /**
-* @name base16-discord-trueblack-original-elements
-* @author @bypass_ (Modified by AI)
-* @version 0.8.1 
+* @name base16-discord-trueblack-original-elements-plus-addons
+* @author @bypass_ (Modified by AI + Addons by User)
+* @version 0.9.0 
 * @website https://github.com/imbypass/base16-Discord
-* @description Default Discord theme fitted with base16 variables, now with true black AMOLED backgrounds and original Discord element colors.
+* @description Default Discord theme fitted with base16 variables, now with true black AMOLED backgrounds, original Discord element colors, and user-added snippets.
 **/
 
 :root {
     --base00: #000000; /* True Black */
     --base01: #000000; /* True Black */
     --base02: #000000; /* True Black */
-    --base03: #6e6a86; /* Muted text, placeholders */
-    --base04: #908caa; /* Secondary text, less important elements */
+    --base03: #6e6a86; /* Muted text, placeholders - for addons that might use it */
+    --base04: #908caa; /* Secondary text - for addons that might use it */
     --base05: #e0def4; /* Primary text */
     --base06: #e0def4; /* Primary text (alternative) */
     --base07: #524f67; /* Accents, if not overridden by Discord */
@@ -33,6 +33,18 @@
     --original-discord-ping-text: #ffffff; /* Light text on mention background */
     --original-discord-link: #0096cf;    /* Typical Discord link color */
     --original-discord-blurple: #5865f2; /* Main brand color */
+
+    /* For "align chat box with user panel fancy" addon */
+    --custom-channel-textarea-text-area-height: 56px; /* From addon */
+    --chatbar-border-color: var(--base02); /* Use true black, effectively no border */
+    --radius-sm: 3px; /* Default Discord radius, can be themed */
+    --border-subtle: var(--base02); /* True black for focus border */
+    --custom-app-top-bar-height: 22px; /* Example value for titlebar addon */
+    --custom-guild-sidebar-width: 240px; /* Example for user area addon */
+    --custom-guild-list-width: 72px; /* Example for user area / server sidebar addon */
+    --bg-base-tertiary: var(--base00); /* For titlebar addon gradient */
+    --chat-background-default: var(--base00); /* For chatbox alignment addon */
+    --bg-mod-subtle: var(--base01); /* For server sidebar addon folder icon */
 }
 
 .theme-light,
@@ -41,12 +53,12 @@
 .theme-midnight,
 .visual-refresh {
     --activity-card-background: var(--base01) !important;
-    /* --background-accent: var(--base03) !important; */ /* RESTORED to Discord default */
-    --background-floating: var(--base02) !important; /* Modals, popups */
-    /* --background-mentioned-hover: var(--base02) !important; */ /* Handled by --mention-background */
-    /* --background-mentioned: var(--base01) !important; */ /* Handled by --mention-background */
-    /* --background-message-highlight: var(--base01) !important; */ /* RESTORED to Discord default */
-    --background-message-hover: var(--base00) !important; /* Can be same as primary or slightly different */
+    /* --background-accent: ... !important; */ /* RESTORED to Discord default */
+    --background-floating: var(--base01) !important; /* True black for modals, popups */
+    /* --background-mentioned-hover: ... !important; */ /* Handled by --mention-background */
+    /* --background-mentioned: ... !important; */ /* Handled by --mention-background */
+    /* --background-message-highlight: ... !important; */ /* RESTORED to Discord default */
+    --background-message-hover: var(--base00) !important; 
     --background-modifier-accent: var(--base02) !important;
     --background-modifier-active: var(--base02) !important;
     --background-modifier-hover: var(--base00) !important;
@@ -66,39 +78,37 @@
     --background-mod-subtle: var(--base02) !important;
     --bg-base-secondary: var(--base00) !important;
     --bg-base-tertiary: var(--base00) !important;
-    /* --bg-brand: var(--base03) !important; */ /* RESTORED to Discord default */
+    /* --bg-brand: ... !important; */ /* RESTORED to Discord default */
     --bg-mod-faint: var(--base01) !important;
     --bg-overlay-2: var(--base01) !important;
     --bg-overlay-3: var(--base01) !important;
-    /* --bg-overlay-color-inverse: var(--base03) !important; */ /* RESTORED */
+    /* --bg-overlay-color-inverse: ... !important; */ /* RESTORED */
     --bg-surface-raised: var(--base02) !important;
     --bg-surface-overlay: var(--base00) !important;
     --black: var(--base00) !important;
-    /* --blurple-50: var(--base0B) !important; */ /* RESTORED to Discord default blurple shades */
-    --border-faint: var(--base02) !important; /* May be invisible on true black */
+    /* --blurple-50: ... !important; */ /* RESTORED to Discord default blurple shades */
+    --border-faint: var(--base02) !important; /* True Black, so borders may be invisible */
     /* All --brand-* variables RESTORED to Discord default */
     /* All --button-danger-* variables RESTORED to Discord default */
     /* All --button-filled-brand-* variables RESTORED to Discord default */
-    /* --button-outline-positive-border: var(--base0B) !important; */ /* RESTORED to Discord default green */
-    /* --button-positive-background: var(--base0B) !important; */ /* RESTORED to Discord default green */
-    /* --button-positive-background-disabled: var(--base03) !important; */ /* RESTORED */
-    /* --button-positive-background-hover: var(--base03) !important; */ /* RESTORED */
-    --button-secondary-background: var(--base02) !important; /* Themed dark secondary buttons */
-    --button-secondary-background-disabled: var(--base03) !important; /* Themed dark disabled */
-    --button-secondary-background-hover: var(--base01) !important; /* Themed dark hover (slightly lighter) */
-    --button-secondary-text: var(--base05) !important; /* Light text on dark secondary buttons */
-    --card-primary-bg: var(--base02) !important;
-    /* --channel-icon: var(--base04) !important; */ /* RESTORED to Discord default */
-    --channels-default: var(--base04) !important; /* Themed text color for channel list */
-    --channel-text-area-placeholder: var(--base03) !important;
-    --channeltextarea-background: var(--base00) !important; /* Make sure this is true black */
-    /* --chat-background-default: var(--base02) !important; */ /* Should be same as --background-primary */
-    /* --checkbox-background-checked: var(--base0D) !important; */ /* RESTORED to Discord default (blurple) */
-    /* --checkbox-border-checked: var(--base0D) !important; */ /* RESTORED */
-    --checkbox-background-default: var(--base02) !important; /* Themed dark checkbox */
-    --checkbox-border-default: var(--base03) !important; /* Themed dark checkbox border */
+    /* --button-outline-positive-border: ... !important; */ /* RESTORED to Discord default green */
+    /* --button-positive-background: ... !important; */ /* RESTORED to Discord default green */
+    --button-secondary-background: var(--base02) !important; /* True Black secondary buttons */
+    --button-secondary-background-disabled: var(--base02) !important; /* True Black disabled */
+    --button-secondary-background-hover: var(--base01) !important; /* True Black hover */
+    --button-secondary-text: var(--base05) !important; /* Light text on black secondary buttons */
+    --card-primary-bg: var(--base01) !important; /* True Black */
+    /* --channel-icon: ... !important; */ /* RESTORED to Discord default */
+    --channels-default: var(--base04) !important; /* Light grey text for channel list */
+    --channel-text-area-placeholder: var(--base03) !important; /* Muted placeholder */
+    --channeltextarea-background: var(--base00) !important; /* True black */
+    /* --chat-background-default: ... !important; */ /* Should be same as --background-primary */
+    /* --checkbox-background-checked: ... !important; */ /* RESTORED to Discord default (blurple) */
+    /* --checkbox-border-checked: ... !important; */ /* RESTORED */
+    --checkbox-background-default: var(--base02) !important; /* True Black checkbox */
+    --checkbox-border-default: var(--base03) !important; /* Muted border for checkbox */
     /* All --control-brand-* variables RESTORED to Discord default */
-    --custom-notice-text: var(--base05) !important; /* Light text on custom notices (assuming dark bg) */
+    --custom-notice-text: var(--base05) !important; /* Light text on custom notices */
     --custom-poll-style-vote-percentage: var(--base04) !important;
     --deprecated-text-input-bg: var(--base01) !important;
     --deprecated-text-input-border: var(--base02) !important;
@@ -109,8 +119,8 @@
     --header-primary: var(--base05) !important; /* Primary text color */
     --header-secondary: var(--base04) !important; /* Secondary text color */
     --home-background: var(--base00) !important;
-    /* --info-warning-foreground: var(--base0A) !important; */ /* RESTORED to Discord default */
-    --input-background: var(--base01) !important; /* For search, settings inputs */
+    /* --info-warning-foreground: ... !important; */ /* RESTORED to Discord default */
+    --input-background: var(--base01) !important; /* True Black for search, settings inputs */
     --interactive-active: var(--base05) !important;
     --interactive-hover: var(--base05) !important;
     --interactive-muted: var(--base03) !important;
@@ -118,16 +128,16 @@
     --mention-background: var(--original-discord-ping-bg) !important;
     --mention-foreground: var(--original-discord-ping-text) !important;
     /* All --menu-item-danger-* variables RESTORED to Discord default */
-    --menu-item-default-hover-bg: var(--base01) !important; /* Themed menu item hover */
+    --menu-item-default-hover-bg: var(--base01) !important; /* True Black menu item hover */
     --message-reacted-background: var(--base02) !important;
     --message-reacted-text: var(--base05) !important;
     --modal-background: var(--base01) !important;
     --modal-footer-background: var(--base00) !important;
-    /* --notice-background-positive: var(--base0B) !important; */ /* RESTORED to Discord default */
-    /* --notice-text-positive: var(--base01) !important; */ /* RESTORED */
-    /* --opacity-blurple-24: var(--base02) !important; */ /* RESTORED */
-    /* --plum-23: var(--base02) !important; */ /* RESTORED (specific Discord color) */
-    /* --polls-victor-fill: var(--base0B) !important; */ /* RESTORED to Discord default */
+    /* --notice-background-positive: ... !important; */ /* RESTORED to Discord default */
+    /* --notice-text-positive: ... !important; */ /* RESTORED */
+    /* --opacity-blurple-24: ... !important; */ /* RESTORED */
+    /* --plum-23: ... !important; */ /* RESTORED (specific Discord color) */
+    /* --polls-victor-fill: ... !important; */ /* RESTORED to Discord default */
     --profile-gradient-button-color: var(--base02) !important;
     --primary-130: var(--base05) !important;
     --primary-300: var(--base05) !important;
@@ -144,18 +154,18 @@
     --search-popout-option-fade: none;
     --search-popout-option-non-text-color: var(--base07) !important;
     /* --status- variables are overridden by direct hex fills below for icons */
-    /* --teal-430: var(--base0C) !important; */ /* RESTORED */
-    /* --text-brand: var(--base06) !important; */ /* RESTORED to Discord default */
+    /* --teal-430: ... !important; */ /* RESTORED */
+    /* --text-brand: ... !important; */ /* RESTORED to Discord default */
     /* All --text-feedback-* variables RESTORED to Discord default */
-    /* --text-link: var(--base04) !important; */ /* RESTORED to Discord default link color */
+    /* --text-link: ... !important; */ /* RESTORED to Discord default link color */
     --text-muted: var(--base03) !important;
-    /* --text-negative: var(--base08) !important; */ /* RESTORED */
+    /* --text-negative: ... !important; */ /* RESTORED */
     --text-normal: var(--base05) !important;
-    /* --text-positive: var(--base0B) !important; */ /* RESTORED */
+    /* --text-positive: ... !important; */ /* RESTORED */
     --text-primary: var(--base05) !important;
     --text-secondary: var(--base04) !important;
     --text-tertiary: var(--base03) !important;
-    /* --text-warning: var(--base09) !important; */ /* RESTORED */
+    /* --text-warning: ... !important; */ /* RESTORED */
     --textbox-markdown-syntax: var(--base05) !important;
     --theme-base-color: var(--base00) !important;
     --user-profile-overlay-background: var(--base01) !important;
@@ -164,7 +174,7 @@
     --white-500: var(--base05) !important;
     --white: var(--base05) !important;
     /* All --yellow-* variables RESTORED to Discord default */
-    /* --__lottieIconColor: var(--base03) !important; */ /* RESTORED */
+    /* --__lottieIconColor: ... !important; */ /* RESTORED */
 
     /* --- ORIGINAL DISCORD STATUS COLORS --- */
     svg[fill^="#f23f43"], rect[fill^="#f23f43"] { fill: var(--original-discord-red) !important; }
@@ -180,7 +190,7 @@
 /* .default__459fb { background-color: var(--base07) !important; } */ /* RESTORED */
 
 /*--- Discord Icon (Top Right) Recolor ---*/
-.childWrapper__6e9f8 { background-color: var(--base02) !important; } /* Themed dark */
+.childWrapper__6e9f8 { background-color: var(--base02) !important; } /* True Black */
 
 /*--- Close Icon Path Recolor ---*/
 svg[class^="closeIcon__"] path { fill: var(--interactive-normal) !important; } /* Use themed interactive color */
@@ -233,8 +243,6 @@ div[class^="actionButtons"] [class^="button"] [class*="buttonColor_"] {
 
 /* --- Secure Lock Icon Recolor --- */
 /* .lockIcon__2666b { display: none; } */ /* RESTORED - Show lock icon */
-
-/* Status Icon recolors using CSS Variables are handled in the main .theme-dark block */
 
 /*--- Default Color Swap ---*/
 /* path[fill^="currentColor"],
@@ -298,14 +306,14 @@ svg.guildBoostBadge__5dba5 path {
     .channelTextArea_f75fb0 { background: var(--channeltextarea-background) !important; } /* True Black */
     .chatContent_f75fb0 { background-color: var(--background-primary) !important; }
     .members_c8ffbb, .member_c8ffbb { background: var(--background-secondary-alt) !important; }
-    .voiceBar__7aaec { background-color: var(--base01) !important; } /* Slightly off-black bar */
+    .voiceBar__7aaec { background-color: var(--base01) !important; } /* True Black bar */
     /* button.button__67645.redGlow__67645,
     span.button__67645.redGlow__67645 { background-color: var(--base02) !important; } */ /* RESTORED */
     /* .experimentButton_e131a9.buttonColor_e131a9.buttonActive_e131a9 {
         background-color: var(--base0B) !important;
         color: var(--base00) !important;
     } */ /* RESTORED to Discord default */
-    .selectedBackground_e681d1 { background-color: var(--base01) !important; } /* Slightly off-black selection */
+    .selectedBackground_e681d1 { background-color: var(--base01) !important; } /* True Black selection */
 
     /* Fix for .themedBackground (often the text area container) */
     :where(.visual-refresh) .themedBackground__74017 {
@@ -335,4 +343,335 @@ svg.guildBoostBadge__5dba5 path {
     path[fill^="#40a258"], svg[fill^="#40a258"], rect[fill^="#40a258"] { fill: var(--original-discord-green) !important; }
     svg[fill^="#83838b"], rect[fill^="#83838b"], path[fill^="#83838b"],
     svg[fill^="#82838b"], rect[fill^="#82838b"], path[fill^="#82838b"] { fill: var(--original-discord-grey) !important; }
+}
+
+/* --------------------- viggy loader --------------------- */
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1223837351831277590*/
+.container__827e6 video.ready__61f2f {
+    display: none;
+}
+
+.content_de05de::before {
+    visibility: visible;
+    content: '';
+    display: block;
+    background: url(https://media.discordapp.net/stickers/1217112512374505613.png?size=240);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 128px;
+    height: 128px;
+    margin: auto;
+    margin-bottom: 48px;
+}
+
+/* --------------------- Oneko Sleeping --------------------- */
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1044717748778971157*/
+[class^="channelTextArea"]::after {
+    content: "";
+    width: 32px;
+    height: 32px;
+    bottom: calc(100% - 3px); /* Mess with the - 3px to change its vertical position */
+    right: 10px; /* Switch this from right to left to put it on the left side, or increase/decrease to change its position */
+    position: absolute;
+    image-rendering: pixelated;
+    pointer-events: none;
+    background-image: url("https://raw.githubusercontent.com/adryd325/oneko.js/14bab15a755d0e35cd4ae19c931d96d306f99f42/oneko.gif");
+    animation: oneko 1s infinite; /* change 1s to make the animation slower/faster */
+}
+
+@keyframes oneko {
+    0%, 50% {
+        background-position: -64px 0;
+    }
+    50.0001%, 100% {
+        background-position: -64px -32px;
+    }
+}
+
+/* --------------------- Shiggy popup --------------------- */
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1222852910011125810*/
+[id*="popout_"]::after, [class*=menu]::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background-image: url('https://media.discordapp.net/stickers/1039992459209490513.png');
+    background-size: cover;
+}
+
+/* --------------------- Detailed Timestamp --------------------- */
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1354458308714696816*/
+span[class*="timestampInline_"] time::before {
+  content: attr(aria-label);
+  font-size: 12px;
+}
+span[class*="timestampInline_"] {
+  font-size: 0px !important;
+}
+
+/* --------------------- align chat box with user panel fancy --------------------- */
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1354621684115837098 */
+.visual-refresh {
+    .form_f75fb0 {
+        margin: 0 8px 8px 8px;
+        padding: 0;
+    }
+    .channelTextArea_f75fb0 {
+        margin: 0;
+        border-color: var(--chatbar-border-color); /* Will be true black */
+        transition: none;
+        background-color: var(--base00) !important; /* Ensure textarea itself is black */
+    }
+    .base_b88801 { /* Reply bar etc. */
+        top: -24px;
+        left: 0;
+        right: 0;
+        background-color: var(--chat-background-default); /* True Black */
+        padding: 0 8px;
+        border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+        border: 1px solid var(--chatbar-border-color); /* True Black */
+        border-bottom: none;
+        transition: none;
+        box-sizing: border-box;
+    }
+    .stackedBars__74017,
+    .threadSuggestionBar__841c8 {
+        border-color: var(--chatbar-border-color) !important; /* True Black */
+    }
+    .channelBottomBarArea_f75fb0 {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .chat_f75fb0 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+    }
+    .form_f75fb0{
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .form_f75fb0:has(.base_b88801) {
+        .channelTextArea_f75fb0 {
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+        }
+    }
+    .form_f75fb0:has(.channelTextArea__74017:focus-within) { /* Classname for text area might be different from original theme */
+        --chatbar-border-color: var(--border-subtle); /* True black on focus */
+    }
+    .scrollerSpacer__36d07 {
+        height: calc(24px + 8px);
+    }
+    .scroller__36d07::-webkit-scrollbar-track { /* .scroller_fea787 or similar for new class */
+        margin-bottom: calc(20px + 8px);
+    }
+    .bottomBar__0f481 { /* Class for "GIF, Sticker..." buttons bar */
+        margin-bottom: 24px;
+    }
+    .wrapper__44df5 { /* This is often for embeds or cards, ensure its margin is 0 */
+        margin: 0;
+        border-radius: var(--radius-sm);
+    }
+}
+
+/* --------------------- titlebar header --------------------- */
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1363870789845258251*/
+.title_c38106 { /* Original title bar */
+  display: none;
+}
+.title_f75fb0 { /* Likely the channel name header in chat view */
+  padding: 0px !important;
+  padding-left: 2px !important;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background: transparent !important;
+  height: var(--custom-app-top-bar-height) !important;
+  min-height: 0px;
+  border: none !important;
+  width: calc(100vw);
+}
+.followButton_f75fb0,
+.topicClickTarget__6ec1a {
+  -webkit-app-region: no-drag !important;
+}
+.base_c48ade:has(.bar_c38106[data-windows="true"]) .title_f75fb0 { /* .base_c48ade is often the main content area */
+  width: calc(100vw - 240px)!important; /* Adjust 240px if sidebar width is different */
+}
+.children__9293f::after { /* Often for fades in headers */
+  background: linear-gradient(to right, transparent 0, var(--bg-base-tertiary) 100%)!important; /* var(--base00) */
+}
+.topic__6ec1a {
+  flex: none;
+}
+
+/* --------------------- Revert user area --------------------- */
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1361443579905445898*/
+.visual-refresh div[class^="sidebar_"] section[class^="panels_"] {
+    width: calc(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width) + 1px);
+    left: var(--custom-guild-list-width);
+    bottom: 0px;
+    border-radius: 0px;
+    border: none;
+    background-color: var(--base00) !important; /* Ensure user panel bg is black */
+}
+.visual-refresh nav[class*=guilds_] {
+  margin-bottom: unset;
+}
+
+/* --------------------- Server Sidebar --------------------- */
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1354502862390038528*/
+nav[class*="guilds_"] {
+    defs>path {
+        d: path("M0 0.464C0 0.301585 0 0.220377 0.0316081 0.158343C0.0594114 0.103776 0.103776 0.0594114 0.158343 0.0316081C0.220377 0 0.301585 0 0.464 0H0.536C0.698415 0 0.779623 0 0.841657 0.0316081C0.896224 0.0594114 0.940589 0.103776 0.968392 0.158343C1 0.220377 1 0.301585 1 0.464V0.536C1 0.698415 1 0.779623 0.968392 0.841657C0.940589 0.896224 0.896224 0.940589 0.841657 0.968392C0.779623 1 0.698415 1 0.536 1H0.464C0.301585 1 0.220377 1 0.158343 0.968392C0.103776 0.940589 0.0594114 0.896224 0.0316081 0.841657C0 0.779623 0 0.698415 0 0.536V0.464Z");
+    }
+    defs, 
+    [class*="blobContainer_"],
+    [class*="wrapper_"],
+    [class*="listItemWrapper__"],
+    svg[class*="placeholderMask__"],
+    svg:not([class*="placeholderMask__"]) > foreignObject {
+        width: var(--guildbar-avatar-size) !important;
+        height: var(--guildbar-avatar-size) !important;
+    }
+    [class*="childWrapper__"]>svg {
+        width: var(--guildbar-avatar-size);
+        height: var(--guildbar-avatar-size);
+    }
+    [class*="childWrapper__"],
+    [class*="childWrapper__"] img,
+    [class*="icon_"],
+    [class*="circleIconButton__"] {
+        border-radius: 50% !important;
+        transition: border-radius 50ms linear;
+    }
+    [class*="selected__"] {
+        [class*="childWrapper__"],
+        [class*="childWrapper__"] img,
+        [class*="icon_"],
+        &[class*="circleIconButton__"] {
+            border-radius: 27% !important;
+        }
+    }
+    [class*="shiftSVG_"] {
+        top: 0px;
+        left: 0px;
+        foreignObject {
+            transform: translate(-4px, -4px);
+        }
+    }
+    mask {
+        --badge-offset: calc(var(--guildbar-avatar-size) - 40px);
+        &:not([class*="folderHeader__"] mask) {
+            use[href$="-lower_badge_masks"] {
+                translate: var(--badge-offset) var(--badge-offset);
+            }
+            use[href$="-upper_badge_masks"] {
+                translate: var(--badge-offset);
+            }
+        }
+        use[href$="-blob_mask"] {
+            scale: var(--blob-scale);
+        }
+    }
+    [class*="folderPreviewWrapper__"] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        [class*="folderPreview__"] {
+            width: calc(var(--guildbar-folder-size) / 3 * 2 + var(--custom-folder-preview-gap) * 2);
+            height: calc(var(--guildbar-folder-size) / 3 * 2 + var(--custom-folder-preview-gap) * 2);
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-content: space-evenly;
+            gap: 4px;
+        }
+    }
+    [class*="iconSizeMini_"] {
+        width: calc(var(--guildbar-folder-size) / 3);
+        height: calc(var(--guildbar-folder-size) / 3);
+        transform: scale(1.15);
+        margin: 0px;
+        [class*="acronym_"] {
+            line-height: calc(var(--guildbar-folder-size) / 3);
+        }
+        &[style*="font-size: 12px;"] { font-size: 10px !important; }
+        &[style*="font-size: 10px;"] { font-size: 7px !important; }
+        &[style*="font-size: 8px;"] { font-size: 6px !important; }
+    } /* Added closing brace */
+    [class*="folderButton__"] { /* Moved outside iconSizeMini_ */
+        overflow: visible;
+    }
+    [class*="folderIcon__"] {
+        svg {
+            width: 28px !important;
+            height: 28px !important;
+        }
+        background-color: var(--bg-mod-subtle) !important; /* Ensure True Black */
+    }
+    [class*="closedFolderIconWrapper__"] {
+        gap: initial;
+    }
+    [class*="listItem__"] {
+        margin-bottom: 7px;
+        height: min-content;
+    }
+    [class*="stack_"] {
+        gap: 0 !important;
+    }
+    #guild-list-unread-dms {
+        margin-top: 0 !important;
+        > div {
+            height: var(--guildbar-avatar-size) !important;
+            margin-bottom: 7px;
+        }
+    }
+    [class*="isExpanded__"] {
+        [class*="folderGroupBackground__"] {
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            background-color: var(--base00) !important; /* Expanded folder background black */
+        }
+        [class*="stack_"] {
+            height: auto !important;
+            :last-child {
+                margin-bottom: 0;
+            }
+        }
+        > [class*="listItem__"] {
+            margin-bottom: 0;
+        }
+        margin-bottom: 7px;
+    }
+    [id^="folder-items-"] {
+        --guildbar-avatar-size: var(--guildbar-folder-size) !important;
+    }
+}
+nav[class*="guilds_"] [class*="listItem__"]:first-child [class*="childWrapper__"] > svg {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+/* --------------------- reduce context menu padding --------------------- */
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1371211975794888794*/
+.scroller_c1e9c4 {
+    margin: -4px;
+    background-color: var(--base00) !important; /* Context menu background */
+}
+.scroller_c1e9c4::after, .scroller_c1e9c4 .separator_c1e9c4 {
+    margin: 1px 8px !important;
+    border-color: var(--base02) !important; /* Separator color */
+}
+.scroller_c1e9c4::after, .scroller_c1e9c4 .wrapper_f563df { /* Wrapper for items like submenus */
+    padding: 2px !important;
+}
+.scroller_c1e9c4::after, .scroller_c1e9c4 .item_c1e9c4 {
+    min-height: 32px; /* Keep original min-height */
+    padding: 4px 8px;
+}
+.scroller_c1e9c4 .item_c1e9c4:hover {
+    background-color: var(--base01) !important; /* Hover color for context menu items */
 }
