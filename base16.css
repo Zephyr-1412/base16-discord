@@ -1,7 +1,7 @@
 /**
 * @name base16-discord-trueblack-original-elements
-* @author @bypass_ (modified)
-* @version 0.8.0 
+* @author @bypass_ (Modified by AI)
+* @version 0.8.1 
 * @website https://github.com/imbypass/base16-Discord
 * @description Default Discord theme fitted with base16 variables, now with true black AMOLED backgrounds and original Discord element colors.
 **/
@@ -235,11 +235,6 @@ div[class^="actionButtons"] [class^="button"] [class*="buttonColor_"] {
 /* .lockIcon__2666b { display: none; } */ /* RESTORED - Show lock icon */
 
 /* Status Icon recolors using CSS Variables are handled in the main .theme-dark block */
-/* The specific selectors below targeting hex codes are now redundant due to the above ^ */
-/* svg[fill^="#f23f43"], rect[fill^="#f23f43"] { fill: var(--status-danger) !important; } */
-/* svg[fill^="#f0b232"], rect[fill^="#f0b232"] { fill: var(--status-warning) !important; } */
-/* path[fill^="#23a55a"], svg[fill^="#23a55a"], rect[fill^="#23a55a"] { fill: var(--status-positive) !important; } */
-/* svg[fill^="#80848e"], rect[fill^="#80848e"] { fill: var(--base03) !important; } */ /* Offline now uses --original-discord-grey */
 
 /*--- Default Color Swap ---*/
 /* path[fill^="currentColor"],
@@ -311,6 +306,25 @@ svg.guildBoostBadge__5dba5 path {
         color: var(--base00) !important;
     } */ /* RESTORED to Discord default */
     .selectedBackground_e681d1 { background-color: var(--base01) !important; } /* Slightly off-black selection */
+
+    /* Fix for .themedBackground (often the text area container) */
+    :where(.visual-refresh) .themedBackground__74017 {
+        background-color: var(--base00) !important;
+        border: none !important; /* Remove any borders */
+        box-shadow: none !important; /* Remove any shadows */
+    }
+    /* Also ensure inner parts of text area are black if they have separate backgrounds */
+    .channelTextArea_f75fb0 .scrollableContainer_ff959c, /* Class name might vary */
+    .channelTextArea_f75fb0 form,
+    .channelTextArea_f75fb0 div[class*="textArea_"],
+    .channelTextArea_f75fb0 div[class*="slateContainer_"],
+    .channelTextArea_f75fb0 .buttons_c481d3, /* Button container */
+    .channelTextArea_f75fb0 .attachedBars_f75fb0 { /* Reply/upload bar */
+        background-color: var(--base00) !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
 
     /* Visual Refresh Status Icons - Ensure they use original Discord colors */
     svg[fill^="#d83a42"], rect[fill^="#d83a42"], path[fill^="#d83a42"],
