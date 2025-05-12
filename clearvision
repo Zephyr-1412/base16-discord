@@ -1,789 +1,161 @@
 /**
- * @name ClearDiscord - Modified for AMOLED and Default Status/Scrollbars
- * @author ClearVision Team  / disguised.owl / Modified by Your AI Assistant
- * @version 7.0.1 (Modified)
- * @description Highly customizable theme for BetterDiscord, modified for AMOLED dark mode and original Discord status/scrollbars.
- * @source https://github.com/ClearVision/ClearVision-v7 (Original Source)
- * @website https://clearvision.github.io
- * @invite dHaSxn3
- */
+ * @name system24
+ * @description a tui-like discord theme.
+ * @author refact0r
+ * @version 2.0.0
+ * @invite nz87hXyvcy
+ * @website https://github.com/refact0r/system24
+ * @source https://github.com/refact0r/system24/blob/master/theme/system24.theme.css
+ * @authorId 508863359777505290
+ * @authorLink https://www.refact0r.dev
+*/
 
-/* IMPORT CSS */
-/* Keep these core theme imports - they provide the base structure */
-@import url("https://clearvision.github.io/ClearVision-v7/main.css");
-@import url("https://clearvision.github.io/ClearVision-v7/betterdiscord.css");
-/* Keep this if you want the no distractions features */
-@import url("https://ukriu.github.io/cssCord/Other/noDistractions.css");
+/* import theme modules */
+@import url('https://refact0r.github.io/system24/build/system24.css');
 
-/* SETTINGS */
-:root {
-  /* ACCENT COLORS */
-  /* Keep accent colors as they don't interfere with status/scrollbars */
-  --main-color: #ce93c7;
-  --hover-color: #1e63b3;
-  --success-color: #43b581; /* Note: This is an accent color, not the status color override */
-  --danger-color: #982929; /* Note: This is an accent color, not the status color override */
-
-  /* STATUS COLORS */
-  /* COMMENTING OUT to keep original Discord status colors */
-  /* --online-color: #43b581; */
-  /* --idle-color: #faa61a; */
-  /* --dnd-color: #982929; */
-  /* --streaming-color: #593695; */
-  /* --offline-color: #808080; */
-
-  /* APP BACKGROUND */
-  /* Set background shading to 0% for true black */
-  --background-shading-percent: 0%;
-  /* REMOVING background image for AMOLED */
-  --background-image: none; /* Changed from url(...) */
-  --background-attachment: fixed; /* Can keep or remove, doesn't matter without image */
-  /* REMOVING background filters */
-  --background-filter: none; /* Changed from saturate(...) */
-
-  /* USER POPOUT BACKGROUND */
-  /* Set popout background to none and filter to none for AMOLED */
-  --user-popout-image: none; /* Changed from var(--background-image) */
-  --user-popout-attachment: var(--background-attachment);
-  --user-popout-filter: none; /* Changed from var(--background-filter) */
-  /* USER MODAL BACKGROUND */
-  /* Set modal background to none and filter to none for AMOLED */
-  --user-modal-image: none; /* Changed from var(--background-image) */
-  --user-modal-attachment: var(--background-attachment);
-  --user-modal-filter: none; /* Changed from var(--background-filter) */
-  /* REMOVING this duplicate/overriding background filter */
-  /* --background-filter: saturate(calc(var(--saturation-factor, 1) * 1)) blur(3px); */
-
-  /* HOME ICON */
-  --home-icon: url(https://clearvision.github.io/icons/discord.svg);
-  /* FONTS */
-  --main-font: "gg sans", Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace;
-
-}
-
-/* THEME SPECIFIC SHADING */
-/* Setting shading to transparent for AMOLED */
-/* We set these specific shades to transparent as they might overlay the background */
-:is(.theme-light, .theme-dark .theme-light) {
-  --background-shading: transparent; /* Changed */
-  --card-shading: transparent; /* Changed */
-  --popout-shading: transparent; /* Changed */
-  --modal-shading: transparent; /* Changed */
-  --input-shading: rgba(255, 255, 255, 0.05); /* Keep input shading unless you want pure black inputs */
-  /* Keep text colors as they are light for dark background */
-  --normal-text: #e4c2e0;
-  --muted-text: #b9abb9;
-}
-
-/* ASH THEME */
-:is(.theme-dark, .theme-light .theme-dark) {
-  --background-shading: transparent; /* Changed */
-  --card-shading: transparent; /* Changed */
-  --popout-shading: transparent; /* Changed */
-  --modal-shading: transparent; /* Changed */
-  --input-shading: rgba(255, 255, 255, 0.05); /* Keep input shading */
-  /* Keep text colors */
-  --normal-text: #e4c2e0;
-  --muted-text: #b9abb9;
-}
-
-/* DARK THEME */
-:is(.theme-darker, .theme-light .theme-darker) {
-  --background-shading: transparent; /* Changed */
-  --card-shading: transparent; /* Changed */
-  --popout-shading: transparent; /* Changed */
-  --modal-shading: transparent; /* Changed */
-  --input-shading: rgba(255, 255, 255, 0.05); /* Keep input shading */
-  /* Keep text colors */
-  --normal-text: #e4c2e0;
-  --muted-text: #b9abb9;
-}
-
-/* ONYX THEME */
-:is(.theme-midnight, .theme-light .theme-midnight) {
-  --background-shading: transparent; /* Changed */
-  --card-shading: transparent; /* Changed */
-  --popout-shading: transparent; /* Changed */
-  --modal-shading: transparent; /* Changed */
-  --input-shading: rgba(255, 255, 255, 0.05); /* Keep input shading */
-  /* Keep text colors */
-  --normal-text: #e4c2e0;
-  --muted-text: #b9abb9;
-}
-
-/* ADD ADDITIONAL CSS BELOW HERE */
-
-/* Radial Status Plugin/Theme Part */
-:root {
-  --rs-version: "2.0.11";
-  /* COMMENTING OUT status color overrides for Radial Status */
-  /* --rs-online-color: #43b581; */
-  /* --rs-idle-color: #faa61a; */
-  /* --rs-dnd-color: #f04747; */
-  /* --rs-offline-color: #636b75; */
-  /* --rs-streaming-color: #643da7; */
-  /* --rs-invisible-color: #747f8d; */
-  /* --rs-self-speaking-color: #57d39b; */
-  /* --rs-phone-color: var(--rs-online-color); */ /* This variable is also commented out above */
-
-  /* Keep other Radial Status settings (spacing, width, shape, phone icon) */
-  --rs-small-spacing: 2px;
-  --rs-medium-spacing: 3px;
-  --rs-large-spacing: 4px;
-  --rs-small-width: 2px;
-  --rs-medium-width: 3px;
-  --rs-large-width: 4px;
-  --rs-avatar-shape: 50%;
-  --rs-phone-visible: block;
-}
-
-/* MODIFYING Radial Status rules to remove custom stroke colors */
-#app-mount .wrapper__44b0c rect {
-  /* Keep existing styles */
-  x: 0;
-  y: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-mask: none;
-          mask: none;
-  display: block;
-  rx: var(--rs-avatar-shape);
-  ry: var(--rs-avatar-shape);
-  fill: transparent !important;
-  stroke-width: var(--rs-small-width);
-  /* REMOVING custom stroke color assignments */
-  stroke: transparent !important; /* Set stroke to transparent so default status color shows */
-}
-/* Removing specific rules that force stroke color based on fill - we want Discord's default handling */
-#app-mount .wrapper__44b0c rect[fill="#23a55a"], #app-mount .wrapper__44b0c rect[fill="#40a258"] { /* stroke: var(--rs-online-color); */ }
-#app-mount .wrapper__44b0c rect[fill="#f0b232"], #app-mount .wrapper__44b0c rect[fill="#cc954c"] { /* stroke: var(--rs-idle-color); */ }
-#app-mount .wrapper__44b0c rect[fill="#f23f43"], #app-mount .wrapper__44b0c rect[fill="#d83a41"] { /* stroke: var(--rs-dnd-color); */ }
-#app-mount .wrapper__44b0c rect[fill="#593695"], #app-mount .wrapper__44b0c rect[mask*=streaming], #app-mount .wrapper__44b0c rect[fill*="var(--status-purple"] { /* stroke: var(--rs-streaming-color); */ }
-#app-mount .wrapper__44b0c rect[fill="#80848e"] { /* stroke: var(--rs-offline-color); */ }
-#app-mount .wrapper__44b0c rect[fill="#82858f"], #app-mount .wrapper__44b0c rect[fill="#82838b"] { /* stroke: var(--rs-invisible-color); */ }
-#app-mount .wrapper__44b0c foreignObject[mask*=mobile] + rect {
-   /* REMOVING custom stroke color assignment for phone icon */
-   stroke: transparent !important; /* Changed from var(--rs-phone-color, var(--rs-online-color)); */
-}
-
-/* Keep other Radial Status styles */
-#app-mount .wrapper__44b0c .dots__5ad89 circle { cy: -8 !important; }
-#app-mount .wrapper__44b0c .dots__5ad89 circle:nth-child(1) { cx: -8.5 !important; }
-#app-mount .wrapper__44b0c .dots__5ad89 circle:nth-child(2) { cx: -2.25 !important; }
-#app-mount .wrapper__44b0c .dots__5ad89 circle:nth-child(3) { cx: 4 !important; }
-#app-mount .wrapper__44b0c .mask__44b0c > rect[x="22"] { x: 0; y: 0; }
-#app-mount .wrapper__44b0c .mask__44b0c > circle { opacity: 0 !important; width: 100%; height: 100%; cx: 43%; cy: 20; }
-#app-mount .wrapper__44b0c .pointerEvents__44b0c[x="14.5"] { fill: rgba(0, 0, 0, 0.5) !important; width: var(--rs-members-width, 30px); height: var(--rs-members-width, 30px); x: calc(var(--rs-members-width, 30px) / 2 / -1 + 2px); y: calc(var(--rs-members-width, 30px) / 2 / -1); }
-#app-mount .wrapper__44b0c img, #app-mount .wrapper__44b0c.avatar__91a9d { border-radius: var(--rs-avatar-shape); }
-#app-mount .wrapper__44b0c svg[width="25"][height="15"] > rect { rx: calc(var(--rs-avatar-shape) * 2) !important; ry: calc(var(--rs-avatar-shape) * 2) !important; }
-#app-mount .wrapper__44b0c[style*="80px"] svg.cursorDefault__44b0c rect, #app-mount .wrapper__44b0c[style*="120px"] svg.cursorDefault__44b0c rect { ry: calc(var(--rs-avatar-shape) * 3.3); rx: calc(var(--rs-avatar-shape) * 3.3); }
-#app-mount .wrapper__44b0c rect[x="16"] { width: 24px; height: 24px; }
-#app-mount .wrapper__44b0c rect[x="28"] { width: 40px; height: 40px; overflow: visible; }
-#app-mount .wrapper__44b0c[style*="32px"] rect { width: 32px; height: 32px; x: -14.5; y: -17; position: relative; z-index: 0; }
-#app-mount .wrapper__44b0c[style*="40px"] > svg > svg rect { width: 40px; height: 40px; x: -19; y: -20; ry: calc(var(--rs-avatar-shape) * 3.3); rx: calc(var(--rs-avatar-shape) * 3.3); }
-#app-mount .wrapper__44b0c[style*="40px"] foreignObject[mask*=mobile] img { width: calc(100% - 18px); }
-#app-mount .wrapper__44b0c[style*="80px"] svg.cursorDefault__44b0c rect { x: -48; y: -52; }
-#app-mount .wrapper__44b0c[style*="80px"] rect { width: 80px; height: 80px; stroke-width: var(--rs-medium-width); }
-#app-mount .wrapper__44b0c[style*="80px"] img { clip-path: inset(calc(var(--rs-medium-spacing) + 1px) calc(var(--rs-medium-spacing) + 1px) round var(--rs-avatar-shape)); }
-#app-mount .wrapper__44b0c[style*="120px"] svg.cursorDefault__44b0c rect { x: -70; y: -76; }
-#app-mount .wrapper__44b0c[style*="120px"] rect { width: 120px; height: 120px; stroke-width: var(--rs-large-width); pointer-events: none; }
-#app-mount .wrapper__44b0c[style*="120px"] img { clip-path: inset(calc(var(--rs-large-spacing) + 1px) calc(var(--rs-large-spacing) + 1px) round var(--rs-avatar-shape)); }
-#app-mount .wrapper__44b0c:not([style*="80px;"], [style*="120px;"], [style*="16px"]) > svg > foreignObject:not(:only-child) img { clip-path: inset(calc(var(--rs-small-spacing) + 1px) calc(var(--rs-small-spacing) + 1px) round var(--rs-avatar-shape)); }
-#app-mount .wrapper__44b0c[style="width: 16px; height: 16px;"] rect { display: none; }
-#app-mount .wrapper__44b0c[style="width: 16px; height: 16px;"] img { clip-path: none; }
-#app-mount .wrapper__44b0c foreignObject[mask*=mobile] { property: inherit; }
-#app-mount .wrapper__44b0c foreignObject[mask*=mobile][width="24"]:after { width: 10px; height: 12px; top: 30%; }
-#app-mount .wrapper__44b0c foreignObject[mask*=mobile][width="32"]:after { width: 10px; height: 14px; top: 30%; }
-#app-mount .wrapper__44b0c foreignObject[mask*=mobile][width="80"]:after { width: 14px; height: 18px; }
-#app-mount .wrapper__44b0c foreignObject[mask*=mobile][width="120"]:after { width: 24px; height: 20px; }
-#app-mount .wrapper__44b0c foreignObject[mask*=mobile]:after {
-  content: ""; display: var(--rs-phone-visible, block);
-  -webkit-mask: url('data:image/svg+xml; utf-8,<svg aria-hidden="true" focusable="false" data-prefix="fas" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg>') center no-repeat;
-  mask: url('data:image/svg+xml; utf-8,<svg aria-hidden="true" focusable="false" data-prefix="fas" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg>') center no-repeat;
-  position: absolute; right: 0%; bottom: 0%;
-  /* REMOVING custom phone icon color assignment */
-  background: transparent !important; /* Changed from var(--rs-phone-color, var(--rs-online-color)); */
-  z-index: 1;
-}
-
-#app-mount .avatarWrapper__37e49 .mask__44b0c > g { transform: none !important; }
-#app-mount .avatarWrapper__37e49 .mask__44b0c > g rect { width: var(--rs-user-area-size, 40px); height: var(--rs-user-area-size, 40px); rx: calc(var(--rs-avatar-shape) * 2) !important; ry: calc(var(--rs-avatar-shape) * 2) !important; }
-#app-mount .avatarSpeaking__44b0c {
-  /* COMMENTING OUT custom speaking ring color */
-  /* box-shadow: inset 0 0 0 2px var(--rs-self-speaking-colour, #57d39b), inset 0 0 0 3px var(--background-secondary); */
-  /* Keeping positioning/size */
-  position: absolute; top: 2px; left: 2px; width: calc(100% - 4px); height: calc(100% - 4px); border-radius: var(--rs-avatar-shape);
-}
-#app-mount .message__5126c .wrapper__44b0c foreignObject[mask*=mobile] { width: calc(100% + 3px); }
-#app-mount .message__5126c .wrapper__44b0c rect[mask*=typing] { width: calc(100% - 9px); }
-#app-mount .avatarHint_f89da9 foreignObject { -webkit-mask: none; mask: none; }
-#app-mount .avatarHintInner_f89da9 { border-radius: var(--rs-avatar-shape) !important; padding-top: 0; width: calc(100% - var(--rs-medium-width) - var(--rs-medium-spacing) + 2px); height: calc(100% - var(--rs-medium-width) - var(--rs-medium-spacing) + 2px); top: 50%; left: 50%; transform: translate(-50%, -50%); position: relative; }
-#app-mount .memberOffline-2lN7gt img { clip-path: none !important; }
-#app-mount .offline__5d473 img { clip-path: none !important; }
-#app-mount .avatarWrapperNonUserBot_f89da9 .wrapper__44b0c img { clip-path: none !important; }
-#app-mount .userInfo__0a06e .wrapper__44b0c { margin-top: 1px; margin-left: 1px; }
-#app-mount .info__2debe .line__2debe:last-child:after { content: "RadialStatus " var(--rs-version); display: block; }
-
-/* custom chat bar input text */
-/* Keep these as they don't affect status/scrollbars or background */
-.placeholder__1b31f.slateTextArea_ec4baf.fontSize16Padding__74017 { visibility: hidden; }
-.placeholder__1b31f.slateTextArea_ec4baf.fontSize16Padding__74017::before { visibility: visible; content: var(--prompt-text); }
-
-
-/* DM GRADIENT */
-/* COMMENTING OUT custom gradient backgrounds for DM list items */
-/* This uses hardcoded colors/gradients that override the default look */
-/* :root { */
-/*     --gDM-online: linear-gradient(to right, rgb(68, 105, 68) , transparent); */
-/*     --gDM-offline: linear-gradient(to right, rgb(66, 66, 66) , transparent); */
-/*     --gDM-dnd: linear-gradient(to right, rgb(255, 0, 0) , transparent); */
-/*     --gDM-idle: linear-gradient(to right, rgb(135, 105, 75) , transparent); */
-/*     --gDM-streaming: linear-gradient(to right, rgb(63, 33, 88) , transparent); */
-/*     --gDM-border-radius: 12px; */ /* Keeping border radius definition in case other rules use it */
-/* } */
-
-/* ul > li > [class*="interactive_"] { */
-/*     border-radius: var(--gDM-border-radius); */ /* Keep border radius */
-/*     margin: 0.3px; */ /* Keep margin */
-/* } */
-
-/* COMMENTING OUT rules that apply the gradients based on status */
-/* [class^="link_"]:has([mask*="online"], [fill="#43a25a"]) { */ /* background: var(--gDM-online); */ /* } */
-/* [class^="link_"]:has([mask*="offline"], [fill="#80848e"]) { */ /* background: var(--gDM-offline); */ /* } */
-/* [class^="link_"]:has([mask*="dnd"], [fill="#d83a42"]) { */ /* background: var(--gDM-dnd); */ /* } */
-/* [class^="link_"]:has([mask*="idle"], [fill="#ca9654"]) { */ /* background: var(--gDM-idle); */ /* } */
-/* [class^="link_"]:has([mask*="streaming"], [fill="#9147ff"]) { */ /* background: var(--gDM-streaming); */ /* } */
-/* make the pill fill all of the memberlist */
-/* [class*="memberInner_"][class*="layout_"] {width: 100%} */ /* Keep this layout adjustment if desired */
-
-
-/* ML GRADIENT */
-/* COMMENTING OUT custom gradient backgrounds for Member List items */
-/* This also uses hardcoded colors/gradients */
-/* :root { */
-/*     --gDM-online: linear-gradient(to right, rgb(68, 105, 68) , transparent); */
-/*     --gDM-offline: linear-gradient(to right, rgb(66, 66, 66) , transparent); */
-/*     --gDM-dnd: linear-gradient(to right, rgb(130,70,70) , transparent); */
-/*     --gDM-idle: linear-gradient(to right, rgb(135, 105, 75) , transparent); */
-/*     --gDM-streaming: linear-gradient(to right, rgb(63, 33, 88) , transparent); */
-/*     --gDM-border-radius: 12px; */ /* Keeping border radius definition here too */
-/* } */
-
-/* div > [class*="layout_"] { */
-/*     border-radius: var(--gDM-border-radius); */ /* Keep border radius */
-/*     margin: 0.3px; */ /* Keep margin */
-/* } */
-
-/* COMMENTING OUT rules that apply the gradients based on status */
-/* [class^="memberInner"]:has([mask*="online"], [fill="#43a25a"]) { */ /* background: var(--gDM-online); */ /* } */
-/* [class^="memberInner"]:has([mask*="offline"], [fill="#f0b232"]) { */ /* background: var(--gDM-offline); */ /* } */ /* Note: This offline color is different from the DM section */
-/* [class^="memberInner"]:has([mask*="dnd"], [fill="#d83a42"]) { */ /* background: var(--gDM-dnd); */ /* } */
-/* [class^="memberInner"]:has([mask*="idle"], [fill="#ca9654"]) { */ /* background: var(--gDM-idle); */ /* } */
-/* [class^="memberInner"]:has([mask*="streaming"], [fill="#9147ff"]) { */ /* background: var(--gDM-streaming); */ /* } */
-/* make the pill fill all of the memberlist */
-/* [class*="memberInner_"][class*="layout_"] {width: 100%} */ /* Keep this layout adjustment if desired */
-
-
-/* Unified Gradient Definitions (also commented out) */
-/* This block seems to redefine the gradients again with rgba colors. Commenting it out. */
-/* :root { */
-/*     --gDM-online: linear-gradient(to right, rgba(68, 105, 68, 0.801) , transparent); */
-/*     --gDM-offline: linear-gradient(to right, rgba(66, 66, 66, 0.493) , transparent); */
-/*     --gDM-dnd: linear-gradient(to right, rgba(130, 70, 70, 0.801) , transparent); */
-/*     --gDM-idle: linear-gradient(to right, rgba(135, 105, 75, 0.473) , transparent); */
-/*     --gDM-streaming: linear-gradient(to right, rgba(84, 32, 126, 0.801) , transparent); */
-/*     --gDM-border-radius: 12px; */
-/* } */
-
-/* Keep prompt text variable if you use that feature */
-:root {
-    --prompt-text: "be silly :3";
-}
-
-/* Keep Visual Refresh/User Area adjustments */
-.visual-refresh section[aria-label="User area"] {
-    width: calc(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width) + 1px);;
-    left: var(--custom-guild-list-width);
-    bottom: 0px;
-    border-radius: 0px;
-    border: none;
-}
-
-.visual-refresh nav:has([data-list-id="guildsnav"]) {
-  margin-bottom: unset;
-}
-
-/* Keep Guild Icon border radius */
-.icon_f34534.guildIcon__48112 { border-radius: 50% !important }
-
-/* Transgender Boost Gradient - This overrides boost gradient, not status/scroll */
-/* Keep if you want this specific visual change */
 body {
-    --guild-boosting-blue: #60d0fa, #f5acba, #ffffff;
-    --guild-boosting-purple: #ffffff, #f5acba, #60d0fa;
+    /* font, change to '' for default discord font */
+    --font: 'DM Mono'; /* change to '' for default discord font */
+    --code-font: 'DM Mono'; /* change to '' for default discord font */
+    font-weight: 300; /* text font weight. 300 is light, 400 is normal. DOES NOT AFFECT BOLD TEXT */
+    letter-spacing: -0.05ch; /* decreases letter spacing for better readability. recommended on monospace fonts.*/
+
+    /* sizes */
+    --gap: 12px; /* spacing between panels */
+    --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
+    --border-thickness: 2px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+    --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
+
+    /* animation/transition options */
+    --animations: on; /* off: disable animations/transitions, on: enable animations/transitions */
+    --list-item-transition: 0.2s ease; /* transition for list items */
+    --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
+
+    /* top bar options */
+    --top-bar-height: var(--gap); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
+    --top-bar-button-position: titlebar; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
+    --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
+    --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
+
+    /* window controls */
+    --custom-window-controls: off; /* off: default window controls, on: custom window controls */
+    --window-control-size: 14px; /* size of custom window controls */
+
+    /* dms button options */
+    --custom-dms-icon: off; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+    --dms-icon-svg-url: url(''); /* icon svg url. MUST BE A SVG. */
+    --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
+    --dms-icon-color-before: var(--icon-secondary); /* normal icon color */
+    --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
+    --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
+    --dms-background-image-url: url(''); /* url of the background image */
+    --dms-background-image-size: cover; /* size of the background image (css background-size property) */
+    --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
+
+    /* background image options */
+    --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
+    --background-image-url: url(''); /* url of the background image */
+
+    /* transparency/blur options */
+    /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+    --transparency-tweaks: off; /* off: no changes, on: remove some elements for better transparency */
+    --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+    --panel-blur: off; /* off: no changes, on: blur the background of panels */
+    --blur-amount: 12px; /* amount of blur */
+    --bg-floating: var(--bg-3); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
+
+    /* other options */
+    --small-user-panel: on; /* off: default user panel, on: smaller user panel like in old discord */
+
+    /* unrounding options */
+    --unrounding: on; /* off: default, on: remove rounded corners from panels */
+
+    /* styling options */
+    --custom-spotify-bar: on; /* off: default, on: custom text-like spotify progress bar */
+    --ascii-titles: on; /* off: default, on: use ascii font for titles at the start of a channel */
+    --ascii-loader: system24; /* off: default, system24: use system24 ascii loader, cats: use cats loader */
+
+    /* panel labels */
+    --panel-labels: on; /* off: default, on: add labels to panels */
+    --label-color: var(--text-muted); /* color of labels */
+    --label-font-weight: 500; /* font weight of labels */
 }
 
-/* Popout/Menu background image - REMOVING */
-[id*="popout_"]::after, [class*=menu]::after {
-    /* content: ""; */ /* Commenting out content removes the generated element */
-    /* position: absolute; */
-    /* top: -65px; */
-    /* left: 5%; */
-    /* right: 5%; */
-    /* width: 90%; */
-    /* height: 65px; */
-    /* REMOVING background image */
-    /* background-image: url('https://media.discordapp.net/stickers/1253883451644579881.png'); */
-    /* background-size: contain; */
-    /* background-repeat: repeat-x; */
-}
-
-/* Keep Profile Badges flex adjustment */
-.profileBadges__7a7cb.profileBadges__7a7cb {
-  flex: none;
-}
-
-/* Spotify Player adjustments - Keep if desired */
-#vc-spotify-player {
-    --blur-amount: 4px; /* higher px = stronger blur, 0 = no blur */
-    --darken-percent: 0.7; /* 0 = album cover is not darkened, 1 = album cover is darkened fully (black) */
-}
-
-#vc-spotify-player {
-    background: transparent !important;
-    position: relative;
-}
-
-#vc-spotify-player > * {
-    position: relative;
-    z-index: 1;
-}
-
-#vc-spotify-player::after {
-    content: "";
-    position: absolute;
-    display: block;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: linear-gradient(rgba(0, 0, 0, var(--darken-percent)),
-            rgba(0, 0, 0, var(--darken-percent))), var(--vc-spotify-track-image);
-    background-size: cover;
-    filter: blur(var(--blur-amount));
-    clip-path: inset(0);
-} /* Closing curly brace for #vc-spotify-player::after - looks like it was missing in original */
-
-#vc-spotify-player + [class^="container"] {
-    background: transparent;
-}
-
-
-/* Message Action Icon Colors - Keep if desired, does not affect status/scroll */
-#message-actions-pin, #message-pin, #message-unpin{ color: skyblue; }
-#message-actions-pin:hover, #message-pin:hover, #message-unpin:hover { background-color: #67a7c0; color: #fff; }
-#message-actions-reply, #message-reply { color: khaki; }
-#message-actions-reply:hover, #message-reply:hover { background-color: #c5bb5d; color: #fff; }
-#message-actions-thread, #message-thread { color: #69c069; }
-#message-actions-thread:hover, #message-thread:hover { background-color: #5dbd5d; color: #fff; }
-#message-actions-mark-unread, #message-mark-unread { color: plum; }
-#message-actions-mark-unread:hover, #message-mark-unread:hover { background-color: #c27ec2; color: #fff; }
-#message-actions-copy-link, #message-copy-link { color: lightseagreen; }
-#message-actions-copy-link:hover, #message-copy-link:hover { background-color: #199c96; color: #fff; }
-#message-actions-tts, #message-tts{ color: var(--brand-experiment); }
-#message-actions-tts:hover, #message-tts:hover{ background-color: var(--brand-experiment); color: #fff; }
-#message-actions-copy-id, #message-devmode-copy-id { color: lightsalmon; }
-#message-actions-copy-id:hover #message-devmode-copy-id:hover{ background-color: lightsalmon; color: #fff; }
-#message-edit, #message-actions-edit{ color: steelblue; }
-#message-edit:hover,  #message-actions-edit:hover{ background-color: steelblue; color: #fff; }
-#message-add-reaction{ color: goldenrod; }
-#message-add-reaction:hover{ background-color: goldenrod; color: #fff; }
-
-/* Connected Accounts Styling - Keep if desired */
-/* COMMENTING OUT the import for new icons as requested, but keeping the styling rules */
-/* @import url(https://github.com/Krekevyks/BetterConnectedAccounts/blob/main/NewIcons.css); */
-
+/* color options */
 :root {
-  --tiktok: #ff0050; /* Keeping colors defined if rules below use them */
-  --instagram: #f09433;
-  --theme-name: "BetterConnectedAccounts"; /* Keep theme info variables */
-  --theme-version: "0.5";
-  --radius: 4px; /* Keep radius variable */
+    --colors: on; /* off: discord default colors, on: midnight custom colors */
+
+    /* text colors */
+    --text-0: var(--bg-4); /* text on colored elements */
+    --text-1: oklch(95% 0 0); /* other normally white text */
+    --text-2: oklch(85% 0 0); /* headings and important text */
+    --text-3: oklch(75% 0 0); /* normal text */
+    --text-4: oklch(60% 0 0); /* icon buttons and channels */
+    --text-5: oklch(40% 0 0); /* muted channels/chats and timestamps */
+
+    /* background and dark colors */
+    --bg-1: oklch(31% 0 0); /* dark buttons when clicked */
+    --bg-2: oklch(27% 0 0); /* dark buttons */
+    --bg-3: oklch(23% 0 0); /* spacing, secondary elements */
+    --bg-4: oklch(19% 0 0); /* main background color */
+    --hover: oklch(54% 0 0 / 0.1); /* channels and buttons when hovered */
+    --active: oklch(54% 0 0 / 0.2); /* channels and buttons when clicked or selected */
+    --active-2: oklch(54% 0 0 / 0.3); /* extra state for transparent buttons */
+    --message-hover: var(--hover); /* messages when hovered */
+
+    /* accent colors */
+    --accent-1: var(--purple-1); /* links and other accent text */
+    --accent-2: var(--purple-2); /* small accent elements */
+    --accent-3: var(--purple-3); /* accent buttons */
+    --accent-4: var(--purple-3); /* [CHANGED] accent buttons when hovered - now same as base color to remove hover color change */
+    --accent-5: var(--purple-5); /* accent buttons when clicked */
+    --accent-new: var(--red-2); /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: var(--mention); /* [CHANGED] background of messages that mention you when hovered - now same as base mention bg */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
+
+    /* status indicator colors */
+    --online: var(--green-2); /* change to #40a258 for default */
+    --dnd: var(--red-2); /* change to #d83a41 for default */
+    --idle: var(--yellow-2); /* change to #cc954c for default */
+    --streaming: var(--purple-2); /* change to ##9147ff for default */
+    --offline: var(--text-4); /* change to #82838b for default offline color */
+
+    /* border colors */
+    --border-light: var(--hover); /* general light border color */
+    --border: var(--active); /* general normal border color */
+    --border-hover: var(--border); /* [CHANGED] border color of panels when hovered - now uses the neutral border color */
+    --button-border: hsl(220, 0%, 100%, 0.1); /* neutral border color of buttons */
+
+    /* base colors */
+    --red-1: oklch(75% 0.13 0);
+    --red-2: oklch(70% 0.13 0);
+    --red-3: oklch(65% 0.13 0);
+    --red-4: oklch(60% 0.13 0);
+    --red-5: oklch(55% 0.13 0);
+
+    --green-1: oklch(75% 0.12 170);
+    --green-2: oklch(70% 0.12 170);
+    --green-3: oklch(65% 0.12 170);
+    --green-4: oklch(60% 0.12 170);
+    --green-5: oklch(55% 0.12 160);
+
+    --blue-1: oklch(75% 0.11 215);
+    --blue-2: oklch(70% 0.11 215);
+    --blue-3: oklch(65% 0.11 215);
+    --blue-4: oklch(60% 0.11 215);
+    --blue-5: oklch(55% 0.11 215);
+
+    --yellow-1: oklch(80% 0.12 90);
+    --yellow-2: oklch(75% 0.12 90);
+    --yellow-3: oklch(70% 0.12 90);
+    --yellow-4: oklch(65% 0.12 90);
+    --yellow-5: oklch(60% 0.12 90);
+
+    --purple-1: oklch(75% 0.12 310);
+    --purple-2: oklch(70% 0.12 310);
+    --purple-3: oklch(65% 0.12 310);
+    --purple-4: oklch(60% 0.12 310);
+    --purple-5: oklch(55% 0.12 310);
 }
-/* Keep rules that apply colors and styling to connected accounts */
-.connectedAccountContainer_e6abe8:has([aria-label="Spotify"]) { --color: var(--spotify); }
-.connectedAccountContainer_e6abe8:has([aria-label="Twitch"]) { --color: var(--twitch); }
-.connectedAccountContainer_e6abe8:has([aria-label="YouTube"]) { --color: var(--youtube); }
-.connectedAccountContainer_e6abe8:has([aria-label="Reddit"]) { --color: var(--reddit); }
-.connectedAccountContainer_e6abe8:has([aria-label="PayPal"]) { --color: var(--paypall); }
-.connectedAccountContainer_e6abe8:has([aria-label="TikTok"]) { --color: var(--tiktok); }
-.connectedAccountContainer_e6abe8:has([aria-label="Steam"]) { --color: var(--steam); }
-.connectedAccountContainer_e6abe8:has([aria-label="Crunchyroll"]) { --color: var(--cruchyroll); }
-.connectedAccountContainer_e6abe8:has([aria-label="eBay"]) { --color: var(--ebay); }
-.connectedAccountContainer_e6abe8:has([aria-label="Xbox"]) { --color: var(--xbox); }
-.connectedAccountContainer_e6abe8:has([aria-label="Battle.net"]) { --color: var(--battlenet); }
-.connectedAccountContainer_e6abe8:has([aria-label="PlayStation Network"]) { --color: var(--playstation); }
-.connectedAccountContainer_e6abe8:has([aria-label="Epic Games"]) { --color: var(--epic-games); }
-.connectedAccountContainer_e6abe8:has([aria-label="GitHub"]) { --color: var(--github); }
-.connectedAccountContainer_e6abe8:has([aria-label="X"]) { --color: var(--twitter); }
-.connectedAccountContainer_e6abe8:has([aria-label="League of Legends"]) { --color: var(--lol); }
-.connectedAccountContainer_e6abe8:has([aria-label="Twitter"]) { --color: var(--twitter); }
-.connectedAccountContainer_e6abe8:has([aria-label="Instagram"]) { --color: var(--instagram); }
-.connectedAccountContainer_e6abe8:has([aria-label="Riot Games"]) { --color: var(--riot-games); }
-.connectedAccountContainer_e6abe8:has([aria-label="Skype"]) { --color: var(--skype); }
-.connectedAccountContainer_e6abe8:has([aria-label="Facebook"]) { --color: var(--facebook); }
-
-.connectedAccountContainer_e6abe8 {
-  border: none;
-  background: var(--color);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5) inset;
-  border-radius: var(--radius);
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.connectedAccountIcon_e6abe8 {
-  filter: drop-shadow(3px 2px 1px rgb(25 41 35 / 0.5));
-}
-
-.connectedAccountOpenIcon_e6abe8,
-.connectedAccountNameText_e6abe8 {
-  color: white !important;
-  filter: drop-shadow(3px 2px 1px rgb(25 41 35 / 0.5));
-}
-
-.connectedAccountVerifiedIcon_e6abe8 .flowerStarContainer__3e3b0 path {
-  fill: rgb(0 0 0 / 1);
-}
-
-.connectedAccountContainer_e6abe8 childContainer__3e3b0 > svg > path {
-  fill: white;
-}
-
-.connectedAccountContainer_e6abe8 childContainer__3e3b0 {
-  filter: drop-shadow(3px 2px 1px rgb(25 41 35 / 0.5));
-}
-
-.info__2debe::before {
-  content: var(--theme-name) " " var(--theme-version);
-  color: var(--text-muted);
-  position: relative;
-  font-size: 12px;
-}
-
-/* Keep User Profile adjustments */
-.visual-refresh {
-.inner_c0bea0 {
-  > header {
-    &:has(.container_ab8609){
-      min-height: calc(var(--custom-user-profile-banner-height) + 50px) !important;
-    }
-    &:has(.headerInner__24502){
-      min-height: calc(var(--custom-user-profile-banner-height) + 85px) !important;
-    }
-  }
-
-  >.none_d125d2 .header__7f9c0:has(.container_ab8609),
-  >.header__5a2c6,
-  >.header__5be3e:has(.container_ab8609) {
-    min-height: calc(var(--custom-user-profile-banner-height) + 57px) !important;
-  }
-
-  header > .headerInner__24502 > .container_ab8609,
-  header > .container_ab8609,
-  >.none_d125d2 .header__7f9c0 > .container_ab8609,
-  >.header__5a2c6 > .container_ab8609,
-  >.header__5be3e > .container_ab8609 {
-    top: calc(var(--custom-user-profile-banner-height) + 9px) !important;
-    left: 117px !important;
-
-    >.outer_ab8609 {
-      max-width: 167px !important;
-
-      &:before {
-        height: 20px;
-        width: 20px;
-        top: 32px;
-        left: -25px;
-      }
-
-      &:after {
-        height: 10px;
-        width: 10px;
-        top: 31px;
-        left: -43px;
-      }
-
-      >.inner_ab8609 {
-        >.addStatusIcon_ab8609 {
-          margin-right: var(--add-custom-status-text-margin);
-        }
-
-        > [data-text-variant="text-sm/normal"] {
-          font-size: 0;
-
-          &:after {
-            content: var(--add-custom-status-text);
-            font-size: 14px;
-          }
-        }
-      }
-    }
-  }
-
-  header > .headerInner__24502 > .container_ab8609 {
-    top: 8px !important;
-    left: 180px !important;
-    transform: scale(1.15);
-
-    >.outer_ab8609:after{
-      top: 26px;
-    }
-  }
-}
-}
-
-/* Server List Scrollbar */
-/* COMMENTING OUT this entire block to keep original Discord scrollbars */
-/*
-ul[data-list-id=guildsnav] div:is(.itemsContainer_ef3116, .bottomSection_ef3116)>div.scroller_ef3116 {
-  &::-webkit-scrollbar {
-      height: 8px;
-      width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-      background-color: var(--scrollbar-thin-track);
-      border: 2px solid var(--scrollbar-thin-track);
-      border-color: var(--scrollbar-thin-track);
-  }
-
-  &::-webkit-scrollbar-thumb {
-      background-clip: padding-box;
-      background-color: var(--scrollbar-thin-thumb);
-      border: 2px solid transparent;
-      border-radius: 4px;
-      min-height: 40px;
-  }
-
-  &::-webkit-scrollbar-corner {
-      background-color: transparent;
-  }
-}
-
-.theme-dark.custom-theme-background ul[data-list-id=guildsnav] div:is(.itemsContainer_ef3116, .bottomSection_ef3116)>div.scroller_ef3116.customTheme__99f8c {
-  &::-webkit-scrollbar-thumb {
-      background-image: linear-gradient(rgb(var(--bg-overlay-color-inverse)/var(--bg-overlay-opacity-4)), rgb(var(--bg-overlay-color-inverse)/var(--bg-overlay-opacity-4))), var(--custom-theme-background);
-      background-size: 200vh;
-  }
-}
-
-.theme-light.custom-theme-background ul[data-list-id=guildsnav] div:is(.itemsContainer_ef3116, .bottomSection_ef3116)>div.scroller_ef3116.customTheme__99f8c {
-  &::-webkit-scrollbar-thumb {
-      background-image: rgb(var(--bg-overlay-color-inverse)/var(--bg-overlay-opacity-6)), rgb(var(--bg-overlay-color)/var(--bg-overlay-opacity-3));
-      background-size: 100vh;
-  }
-}
-*/
-
-/* Channel List Styling - Keep if desired */
-.unread__2ea32 { width: 2px; height: 8px; left: 10px; right: auto; top: 14px; }
-.modeSelected__2ea32 .link__2ea32 { background-color: var(--brand-700)!important; }
-.link__2ea32 {
-  border-radius: 0px!important;
-  padding: 0px!important;
-  padding-left: 16px!important;
-  &::before {
-    width: 1px;
-    left: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  &:hover {
-    background-color: var(--brand-800)!important;
-  }
-  .icon__2ea32 { scale: 0.9; }
-  .linkTop__2ea32 { gap: 4px; }
-}
-.wrapper__2ea32 { margin: 3px; }
-.name__2ea32, .overflow__82b15, .username__07f91 { font-size: 15px; font-weight: 500; line-height: 1.4857142857142858; }
-.wrapper__29444 { padding: var(--space-xxs) var(--space-xs); padding-left: 4px; box-sizing: content-box; .mainContent__29444 { flex-direction: row-reverse !important; flex: none !important; gap: 8px; } .icon__29444 { scale: 1.25; } }
-.spine__5b40b { display: none !important; }
-.spineBorder__5b40b { left: 10px; width: 1px; background: rgba(255, 255, 255, 0.3) !important; height: 100%; }
-.typeThread__2ea32 { margin-left: 10px !important; .link__2ea32 { padding-left: 20px!important; } }
-.containerDefault__29444, .wrapper__29444, .content__07f91, .list_c3cd7d { padding: 0px!Important; }
-.list_c3cd7d { padding-left: 16px!important; }
-.sectionDivider__629e4 { margin: 4px!important; margin-top: 8px!important; width: 100%!important; }
-.linkBottom__2ea32 { margin-left: 4px; }
-
-/* Remove Profile Reactions - Keep if desired */
-[class*='statusPopover'], [class*='avatarPopover__'], [class*='activityPopover__'] {display:none;}
-
-/* MESSAGES  - - - - - - - - - - - - - - - - - - - - - */
-/* Keep message styling if desired, adjust colors for AMOLED if needed */
-/* The background colors are set to rgb(71, 51, 69) and var(--brand-500) - you might want to make these pure black or darker */
-.contents_c19a55>.messageContent_c19a55 {
-  background-color: rgb(0, 0, 0); /* Changed from rgb(71, 51, 69) for AMOLED */
-  width: fit-content;
-  margin-left: 0px !important;
-  padding-left: 0px !important;
-  padding: 14px !important;
-  border-radius: 0px 10px 10px 0px;
-  box-sizing: content-box;
-  max-width: 100%;
-  word-wrap: normal;
-}
-
-.groupStart__5126c .messageContent_c19a55 {
-  border-radius: 10px 10px 10px 0px;
-}
-
-.message__5126c,
-.contents_c19a55 {
-  max-width: calc(100% - var(--custom-message-margin-left-content-cozy)) !important;
-  min-width: calc(100% - var(--custom-message-margin-left-content-cozy)) !important;
-}
-
-.buttonContainer_c19a55 .container__040f0 {
-  right: 20px;
-}
-
-.reactionInner__23977[aria-label*=", 1 "] .reactionCount__23977 {
-  display: none !important;
-}
-
-.messageListItem__5126c[data-is-self="true"] {
-  align-items: end;
-  align-content: end;
-  justify-content: end;
-  justify-items: end;
-
-  .message__5126c {
-      padding-right: var(--custom-message-margin-left-content-cozy) !important;
-
-      .contents_c19a55 {
-          justify-items: end;
-      }
-
-      .avatar_c19a55 {
-          left: auto !important;
-          right: var(--custom-message-margin-horizontal);
-      }
-
-      .avatarDecoration_c19a55 {
-          left: auto !important;
-          right: calc(var(--custom-message-margin-horizontal) - var(--custom-message-avatar-decoration-size) / 2 + var(--custom-message-avatar-size) / 2);
-      }
-
-      .contents_c19a55>.messageContent_c19a55 {
-          border-radius: 10px 0px 0px 10px;
-          background-color: rgb(0, 0, 0); /* Changed from var(--brand-500) for AMOLED - you could use a very dark grey here too */
-      }
-
-      &.groupStart__5126c .messageContent_c19a55 {
-          border-radius: 10px 10px 0px 10px;
-      }
-
-      .container_b7e1cb>* {
-          justify-self: end !important;
-          align-self: end !important;
-      }
-
-      .visualMediaItemContainer_f4758a {
-          width: auto;
-      }
-
-      .contents_c19a55 {
-          justify-self: end;
-      }
-
-      &.hasReply_c19a55 {
-          padding-top: 22px;
-      }
-
-      .repliedMessage_c19a55 {
-          position: absolute;
-          flex-direction: row-reverse;
-          top: 0px;
-          left: auto !important;
-          right: calc(var(--custom-message-margin-horizontal) - var(--custom-message-avatar-decoration-size) / 2 + var(--custom-message-avatar-size) / 2);
-          margin-right: calc(var(--chat-avatar-size) * 1.5 + 12px);
-          max-width: calc(100% - var(--custom-guild-sidebar-width) - var(--custom-guild-list-width) + 32px);
-      }
-
-      .repliedMessageClickableSpine_c19a55 {
-          right: calc(var(--chat-avatar-size) / 2 * -1 + var(--gutter) * -1 - 4px);
-          left: 100%;
-          border-right: var(--spine-width) solid var(--spine-default);
-          border-bottom: 0 solid var(--spine-default);
-          border-left: 0 solid var(--spine-default);
-          border-top: 2px solid var(--spine-default);
-          border-top: var(--spine-width) solid var(--spine-default);
-          border-top-right-radius: 6px;
-          border-top-left-radius: 0px;
-      }
-  }
-
-  .buttonContainer_c19a55 {
-      right: auto;
-      left: 0;
-
-      .container__040f0 {
-          right: auto;
-          left: 56px;
-      }
-  }
-
-  .reactions__23977 {
-      align-content: flex-end;
-      justify-content: flex-end;
-  }
-}
-
-/* Keep Name Tag display adjustment */
-.nameTag__37e49 { display: none; }
-
-/* Keep Panel/Avatar adjustments */
-[class*="panels"] [class*="avatarWrapper"] { min-width: unset; }
-.container__37e49 { gap: var(--space-4) !important; padding-top: 0 !important; padding-bottom: 0 !important; }
-[class*="avatarWrapper__"] {
-  border-radius: 100% !important;
-  width: min-content;
-  &:hover { background-color: transparent !important; }
-  & > .avatar__37e49 {
-    width: 30px !important;
-    height: 40px;
-    margin-top: -1px;
-    & > svg { width: 39px !important; }
-  }
-}
-.avatarDecoration__44b0c{ margin-left: 1.8px; }
-
-/* COMMENTING OUT to try and remove the Radial Status popovers */
-/* This seems to be an attempt to hide the default popovers */
-/* [class*='statusPopover'], [class*='avatarPopover__'], [class*='activityPopover__'] {display:none;} */
-
-/*
-IMPORTANT CONSIDERATIONS:
-
-1.  AMOLED Background: By removing the background image and setting shading to transparent, the theme will rely on Discord's base background color. If your Discord client setting is set to "Dark" or "Darker", this *should* be very dark grey, but might not be pure black (#000000). You might need another small CSS rule like:
-    ```css
-    :root {
-        --background-primary: #000 !important;
-        --background-secondary: #000 !important;
-        --background-tertiary: #000 !important;
-        --background-floating: #000 !important;
-        --deprecated-panel-background: #000 !important;
-    }
-    ```
-    Place this rule near the top within the main `:root {}` block if the background is not pure black after applying the changes above. I haven't added it directly in the main code block above, as it might interfere with other things if not carefully placed, but it's the standard way to force AMOLED black.
-
-2.  Status Icons: Commenting out the `--rs-*-color` variables and the rules that explicitly set stroke colors for the Radial Status rings *should* revert the rings to using Discord's default status colors for avatars. The phone icon should also use the default color.
-
-3.  Scrollbars: Commenting out the `::-webkit-scrollbar` block completely removes the custom styling, reverting to the default Discord scrollbar appearance.
-
-4.  DM/ML Gradients: Commenting out the `--gDM-*` variables and the `background` rules for the DM list and Member List items based on status removes the custom colored gradients, making these lists look more like default Discord (assuming the main theme handles their base background color correctly).
-
-5.  Missing Curly Brace: I added a closing curly brace `}` for the `#vc-spotify-player::after` rule, as it appeared to be missing in the original code you provided.
-
-*/
