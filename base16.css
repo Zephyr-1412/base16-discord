@@ -1,22 +1,25 @@
 /**
-* @name base16-discord-amoled-original
-* @author @bypass_ (modified by AI based on user feedback)
-* @version 0.1.7
+* @name base16-discord-dark-default-style
+* @author @bypass_ 
+* @version 0.1.8
 * @website https://github.com/imbypass/base16-Discord
-* @description AMOLED Black theme with original Discord element colors restored.
+* @description Dark theme similar to Discord's default, with original Discord element colors restored.
 **/
 
 :root {
-    --base00: #000000; /* True black for AMOLED */
-    --base01: #101010; /* Very dark gray, slightly off-black for subtle differentiation */
-    --base02: #181818; /* Dark gray for less prominent backgrounds or elements */
-    --base03: #6e6a86; /* Kept from original for muted/placeholder text if needed */
-    --base04: #908caa; /* Kept from original for secondary text if needed */
-    --base05: #e0def4; /* Light text color */
-    --base06: #e0def4; /* Alternative light text color / accents */
-    --base07: #524f67; /* Muted accents from original */
+    /* New Dark Theme Palette (Not AMOLED Black) */
+    --base00: #1e1f22; /* Darkest: Used for sidebars, top bar, user panel, context menus, inputs */
+    --base01: #2b2d31; /* Medium Dark: Used for main chat content area, activity panel */
+    --base02: #313338; /* Lighter Dark: Used for message hover, selected items, some raised surfaces */
 
-    /* Base16 accent colors - less used now, but kept for code blocks */
+    /* Text Colors (closer to Discord defaults) */
+    --base03: #80848e; /* Muted text (Discord's text-muted: #80848e) */
+    --base04: #b9bbbe; /* Secondary text (Discord's header-secondary: #b9bbbe) */
+    --base05: #dcddde; /* Primary text (Discord's text-normal: #dcddde) */
+    --base06: #ffffff; /* Brightest text / specific accents */
+
+    /* Base16 Accent Colors - Retained for code blocks or specific themed elements */
+    --base07: #524f67; /* Muted accents from original base16 */
     --base08: #eb6f92; /* Red */
     --base09: #f6c177; /* Orange */
     --base0A: #ebbcba; /* Yellow */
@@ -25,6 +28,9 @@
     --base0D: #c4a7e7; /* Purple */
     --base0E: #f6c177; /* Magenta (using orange as placeholder) */
     --base0F: #524f67; /* Brown (using muted accent as placeholder) */
+
+    /* Custom Scrollbar Thumb Color from Screenshot */
+    --scrollbar-custom-thumb: #3a3d42;
 }
 
 .theme-light,
@@ -32,281 +38,113 @@
 .theme-darker,
 .theme-midnight,
 .visual-refresh {
+    /* Backgrounds */
     --activity-card-background: var(--base01) !important;
-    /* --background-accent: var(--base03) !important; */ /* RESTORED: Discord default (blurple/brand) */
-    --background-floating: var(--base01) !important; /* Modals, popups */
-    --background-mentioned-hover: var(--base02) !important;
-    --background-mentioned: var(--base01) !important; /* Slightly lighter than main chat for highlight */
-    --background-message-highlight: var(--base01) !important;
-    --background-message-hover: var(--base00) !important; /* Can be same as primary or slightly different */
-    --background-modifier-accent: var(--base02) !important;
-    --background-modifier-active: var(--base02) !important;
-    --background-modifier-hover: var(--base00) !important; /* Darker hover for modifiers */
-    --background-modifier-selected: var(--base01) !important;
-    --background-primary: var(--base00) !important;     /* Main chat area */
-    --background-secondary-alt: var(--base01) !important;/* Member list, etc. */
-    --background-secondary: var(--base00) !important;   /* Channel list sidebar */
+    --background-floating: var(--base00) !important;        /* Context Menus, Modals, Popouts */
+    /* --background-accent: var(--brand-experiment) !important; */ /* RESTORED: Let Discord handle this */
+    --background-mentioned-hover: rgba(250, 166, 26, 0.1) !important; /* Discord's yellow mention hover */
+    --background-mentioned: rgba(250, 166, 26, 0.05) !important;    /* Discord's yellow mention */
+    --background-message-highlight: rgba(114, 137, 218, 0.07) !important; /* Subtle blurple for other highlights */
+    --background-message-hover: var(--base02) !important;     /* Hover on messages in chat */
+    --background-modifier-accent: rgba(79,84,92,0.24) !important;
+    --background-modifier-active: rgba(79,84,92,0.48) !important;
+    --background-modifier-hover: var(--base02) !important; /* Or rgba(79,84,92,0.16) */
+    --background-modifier-selected: rgba(79,84,92,0.32) !important;
+
+    --background-primary: var(--base01) !important;         /* Main chat area */
+    --background-secondary: var(--base00) !important;       /* Channel list sidebar */
+    --background-secondary-alt: var(--base00) !important;   /* Member list right sidebar */
+    --background-tertiary: var(--base00) !important;        /* Top bar, User area, Server list (far left) */
+
     --background-surface-highest: var(--base02) !important;
-    --background-surface-higher: var(--base02) !important;
-    --background-surface-high: var(--base02) !important;
-    --background-tertiary: var(--base00) !important;    /* Top bar, user area */
-    --background-base-low: var(--base01) !important;
-    --background-base-lower: var(--base00) !important;
-    --background-base-lowest: var(--base00) !important;
-    --background-base-tertiary: var(--base00) !important;
-    --background-code: var(--base02) !important;
-    --background-mod-subtle: var(--base02) !important;
-    --bg-base-secondary: var(--base00) !important;
-    --bg-base-tertiary: var(--base00) !important;
-    /* --bg-brand: var(--base03) !important; */ /* RESTORED */
-    --bg-mod-faint: var(--base01) !important;
-    --bg-overlay-2: var(--base01) !important;
-    --bg-overlay-3: var(--base01) !important;
-    /* --bg-overlay-color-inverse: var(--base03) !important; */ /* RESTORED */
-    --black: var(--base00) !important; /* Ensure Discord's --black is our black */
-    /* --blurple-50: var(--base0B) !important; */ /* RESTORED */
-    --border-faint: var(--base02) !important;
-    /* --brand-05a: var(--base01) !important; */ /* RESTORED */
-    /* --brand-10a: var(--base01) !important; */ /* RESTORED */
-    /* --brand-15a: var(--base01) !important; */ /* RESTORED */
-    /* --brand-260: var(--base0D) !important; */ /* RESTORED */
-    /* --brand-360: var(--base0D) !important; */ /* RESTORED */
-    /* --brand-500: var(--base0F) !important; */ /* RESTORED */
-    /* --brand-560: var(--base01) !important; */ /* RESTORED */
-    /* --button-danger-background: var(--base08) !important; */ /* RESTORED */
-    /* --button-danger-background-disabled: var(--base03) !important; */ /* RESTORED */
-    /* --button-filled-brand-background: var(--base0D) !important; */ /* RESTORED */
-    /* --button-filled-brand-background-hover: var(--base03) !important; */ /* RESTORED */
-    /* --button-filled-brand-text: var(--base00) !important; */ /* RESTORED (usually white) */
-    /* --button-filled-brand-text-hover: var(--base05) !important; */ /* RESTORED */
-    /* --button-outline-positive-border: var(--base0B) !important; */ /* RESTORED */
-    /* --button-outline-danger-background-hover: var(--base08) !important; */ /* RESTORED */
-    /* --button-outline-danger-border-hover: var(--base08) !important; */ /* RESTORED */
-    /* --button-positive-background: var(--base0B) !important; */ /* RESTORED */
-    /* --button-positive-background-disabled: var(--base03) !important; */ /* RESTORED */
-    /* --button-positive-background-hover: var(--base03) !important; */ /* RESTORED */
-    --button-secondary-background: var(--base02) !important;
-    --button-secondary-background-disabled: var(--base03) !important;
-    --button-secondary-background-hover: var(--base01) !important; /* Slightly lighter hover */
-    --button-secondary-text: var(--base05) !important;
-    --card-primary-bg: var(--base01) !important;
-    /* --channel-icon: var(--base04) !important; */ /* RESTORED */
-    --channels-default: var(--base04) !important; /* Text color in channel list, themed gray ok */
-    --channel-text-area-placeholder: var(--base03) !important;
-    --channeltextarea-background: var(--base01) !important; /* Message input box */
-    --chat-background-default: var(--base00) !important; /* Should match primary */
-    /* --checkbox-background-checked: var(--base0D) !important; */ /* RESTORED */
-    /* --checkbox-border-checked: var(--base0D) !important; */ /* RESTORED */
-    --checkbox-background-default: var(--base02) !important;
-    --checkbox-border-default: var(--base03) !important;
-    /* --control-brand-foreground-new: var(--base0D) !important; */ /* RESTORED */
-    /* --control-brand-foreground: var(--base04) !important; */ /* RESTORED */
-    --custom-notice-text: var(--base01) !important;
-    --custom-poll-style-vote-percentage: var(--base04) !important;
-    --deprecated-text-input-bg: var(--base01) !important;
-    --deprecated-text-input-border: var(--base02) !important;
-    --font-display: var(--font, "gg sans") !important;
-    --font-headline: var(--font, "gg sans") !important;
-    --font-primary: var(--font, "gg sans") !important;
-    /* --green-330: var(--base0B) !important; */ /* RESTORED */
-    /* --green-360: var(--base0B) !important; */ /* RESTORED */
-    /* --green-300: var(--base0B) !important; */ /* RESTORED */
-    --header-primary: var(--base05) !important;   /* Main headings, light text */
-    --header-secondary: var(--base04) !important; /* Sub-headings, slightly dimmer text */
-    --home-background: var(--base00) !important;
-    /* --info-warning-foreground: var(--base0A) !important; */ /* RESTORED */
-    --input-background: var(--base01) !important; /* Search bars, settings inputs */
-    --interactive-active: var(--base05) !important; /* Text color when active */
-    --interactive-hover: var(--base05) !important;  /* Text color on hover */
-    --interactive-muted: var(--base03) !important;  /* Muted icon/text color */
-    --interactive-normal: var(--base04) !important; /* Default icon/text color (e.g., channel icons) */
-    --mention-background: hsla(var(--yellow-hsl-300), 0.1) !important; /* Use Discord's mention style, but ensure bg is subtle if it tries to use a light color */
-    --mention-foreground: hsl(var(--yellow-hsl-300)) !important; /* Use Discord's mention text color */
-    /* --menu-item-danger-active-bg: var(--base08) !important; */ /* RESTORED */
-    /* --menu-item-danger-hover-bg: var(--base08) !important; */ /* RESTORED */
-    --menu-item-default-hover-bg: var(--base02) !important;
-    --message-reacted-background: var(--base01) !important;
-    --message-reacted-text: var(--base05) !important;
-    --modal-background: var(--base01) !important;
+    --background-surface-higher: var(--base01) !important;
+    --background-surface-high: var(--base01) !important;
+
+    --background-code: var(--base00) !important;            /* Code block background */
+    --channeltextarea-background: var(--base00) !important; /* Message input box */
+    --input-background: var(--base00) !important;           /* Search bars, settings inputs */
+
+    --home-background: var(--base00) !important;            /* Friends page background */
+    --modal-background: var(--base00) !important;
     --modal-footer-background: var(--base00) !important;
-    /* --notice-background-positive: var(--base0B) !important; */ /* RESTORED */
-    /* --notice-text-positive: var(--base01) !important; */ /* RESTORED */
-    /* --opacity-blurple-24: var(--base02) !important; */ /* RESTORED */
-    /* --plum-23: var(--base02) !important; */ /* RESTORED */
-    /* --polls-victor-fill: var(--base0B) !important; */ /* RESTORED */
-    --profile-gradient-button-color: var(--base02) !important;
-    --primary-130: var(--base05) !important; /* Text color */
-    --primary-300: var(--base05) !important; /* Text color */
-    --primary-500: var(--base02) !important; /* Often interactive element backgrounds */
-    --primary-600: var(--base00) !important; /* Main background */
-    --primary-630: var(--base01) !important; /* Slightly lighter background */
-    --primary-660: var(--base00) !important; /* Main background */
-    --primary-800: var(--base00) !important; /* Darkest background */
-    /* --red-400: var(--base08) !important; */ /* RESTORED */
-    /* --red-460: var(--base08) !important; */ /* RESTORED */
-    /* --red-500: var(--base08) !important; */ /* RESTORED */
-    /* --red-630: var(--base08) !important; */ /* RESTORED */
-    /* --red: var(--base08) !important; */ /* RESTORED */
-    --scrollbar-auto-thumb: var(--base02) !important;
-    --scrollbar-auto-track: var(--base01) !important; /* Make track slightly visible */
-    --scrollbar-thin-thumb: var(--base02) !important;
-    --scrollbar-thin-track: transparent;
-    --search-popout-option-fade: none;
-    --search-popout-option-non-text-color: var(--base07) !important;
-    /* All status variables commented out to use Discord defaults */
-    /* --status-danger-background: var(--base08) !important; */
-    /* --status-danger: var(--base08) !important; */
-    /* --status-negative: var(--base08) !important; */
-    /* --status-positive-background: var(--base0B) !important; */
-    /* --status-positive-text: var(--base0B) !important; */
-    /* --status-positive: var(--base0B) !important; */
-    /* --status-success: var(--base0B) !important; */
-    /* --status-warning-background: var(--base03) !important; */
-    /* --status-warning: var(--base09) !important; */
-    /* --teal-430: var(--base0C) !important; */ /* RESTORED */
-    /* --text-brand: var(--base06) !important; */ /* RESTORED */
-    /* --text-feedback-positive: var(--base0B) !important; */ /* RESTORED */
-    /* --text-feedback-negative: var(--base08) !important; */ /* RESTORED */
-    /* --text-feedback-warning: var(--base09) !important; */ /* RESTORED */
-    /* --text-feedback-success: var(--base0B) !important; */ /* RESTORED */
-    /* --text-link: var(--base04) !important; */ /* RESTORED */
-    --text-muted: var(--base03) !important;    /* Timestamp, "edited" text */
-    /* --text-negative: var(--base08) !important; */ /* RESTORED */
-    --text-normal: var(--base05) !important;   /* Main message text */
-    /* --text-positive: var(--base0B) !important; */ /* RESTORED */
-    --text-primary: var(--base05) !important;  /* Same as normal, often */
-    --text-secondary: var(--base04) !important;/* Less important text, user activity */
-    --text-tertiary: var(--base03) !important; /* Even less important text */
-    /* --text-warning: var(--base09) !important; */ /* RESTORED */
-    --textbox-markdown-syntax: var(--base05) !important; /* ``` characters */
-    --theme-base-color: var(--base00) !important; /* Should match primary bg */
-    --user-profile-overlay-background: var(--base01) !important;
-    --white-100: var(--base05) !important;
-    --white-200: var(--base05) !important;
-    --white-500: var(--base05) !important;
-    --white: var(--base05) !important;
-    /* --yellow-360: var(--base0A) !important; */ /* RESTORED */
-    /* --yellow-300: var(--base0A) !important; */ /* RESTORED */
-    /* --__lottieIconColor: var(--base03) !important; */ /* RESTORED */
+    --user-profile-overlay-background: var(--base00) !important;
+
+    /* Text Colors */
+    --header-primary: var(--base05) !important;
+    --header-secondary: var(--base04) !important;
+    /* --text-link: #0096cf !important; */ /* RESTORED: Let Discord use its default link color variable */
+    --text-muted: var(--base03) !important;
+    --text-normal: var(--base05) !important;
+    /* --text-primary: var(--base05) !important; -- already covered by text-normal usually */
+    /* --text-secondary: var(--base04) !important; -- already covered by header-secondary usually */
+    /* --text-tertiary: var(--base03) !important; -- already covered by text-muted usually */
+    --textbox-markdown-syntax: var(--base04) !important;
+
+    /* Interactive Elements (Icons, non-button interactives) */
+    --interactive-active: var(--base05) !important;     /* e.g. active icon color */
+    --interactive-hover: var(--base05) !important;      /* e.g. icon color on hover */
+    --interactive-muted: var(--base03) !important;      /* e.g. disabled icon color */
+    --interactive-normal: var(--base04) !important;     /* e.g. default icon color for channel icons */
+
+    /* Scrollbars */
+    --scrollbar-auto-thumb: var(--scrollbar-custom-thumb) !important;
+    --scrollbar-auto-track: transparent !important; /* Track matches element bg */
+    --scrollbar-thin-thumb: var(--scrollbar-custom-thumb) !important;
+    --scrollbar-thin-track: transparent !important;
+
+    /* Redefine base black/white for consistency if Discord uses them */
+    --black: var(--base00) !important;
+    --white: var(--base06) !important; /* Use brightest for this */
+
+    /* General Buttons (non-brand, non-positive/danger) */
+    /* --button-secondary-background: #4f545c !important; */ /* RESTORED: Use Discord's default */
+    /* --button-secondary-background-hover: #5d6269 !important; */ /* RESTORED */
+    /* --button-secondary-background-disabled: rgba(79, 84, 92, 0.5) !important; */ /* RESTORED */
+    /* --button-secondary-text: var(--base05) !important; */ /* RESTORED */
+
+    /* Ensure semantic color variables are NOT overridden here to keep Discord defaults */
+    /* e.g. --brand-experiment, --status-danger, --green-360, --red-400 etc. are left to Discord */
 }
 
 /*--- Selected Text Recolor ---*/
 ::selection {
-    color: var(--base00);
-    background: var(--base0D); /* Purple selection from base16 */
+    color: var(--base00); /* Dark text on selection */
+    background: var(--base0D); /* Purple selection background from base16 accents */
 }
-
-/*--- Default Folder Color Recolor ---*/
-/* .default__459fb { background-color: var(--base07) !important; } */ /* RESTORED */
 
 /*--- Discord Icon (Top Right) Recolor ---*/
-.childWrapper__6e9f8 { background-color: var(--base01) !important; } /* Kept themed dark */
+.childWrapper__6e9f8 { background-color: var(--base00) !important; } /* Match darkest bg */
 
 /*--- Close Icon Path Recolor ---*/
-svg[class^="closeIcon__"] path { fill: var(--interactive-normal) !important; } /* Use interactive normal for consistency */
+svg[class^="closeIcon__"] path { fill: var(--interactive-normal) !important; }
 
 /*--- Listen Along Invite Recolor ---*/
-.invite__4d3fa { background: var(--base01) !important; border-color: var(--base02) !important; }
+.invite__4d3fa { background: var(--base00) !important; border-color: var(--base02) !important; }
 
 /*--- Activity Card Background Recolor ---*/
-.card__73069 { background-color: var(--base01) !important; } /* Ensure important */
+.card__73069 { background-color: var(--base01) !important; }
 
-/* Top bars like "unread messages" */
-div[class^="bar__"] { background-color: var(--base01) !important; border-color: var(--base02) !important; }
-/*--- Voice Bar Text Recolor ---*/
-/* .barText__7aaec { color: var(--base0B) !important; } */ /* RESTORED */
-/* .unreadIcon__7aaec { color: var(--base0B) !important; } */ /* RESTORED */
+/* Top bars like "unread messages", "new messages" */
+div[class^="bar__"] { background-color: var(--base00) !important; border-color: var(--base02) !important; }
 
-/*--- Mentions Bar Text Recolor ---*/
-/* .mentionsBar__7aaec .barText__7aaec { color: var(--base05) !important; } */ /* RESTORED (uses mention colors) */
+/* Message input area adjustments if needed beyond variable */
+.channelTextArea_f75fb0 .scrollableContainer__75de1 { background-color: var(--channeltextarea-background) !important; }
 
-/*--- Forum Background Recolor ---*/
-.container_f369db { background-color: var(--bg-overlay-2, var(--base01)) !important; } /* Use overlay var or fallback */
-
-/*--- Sidebar Icon Recolor ---*/
-/* .circleIconButton__5bc7e { color: var(--interactive-normal); } */ /* RESTORED (should use interactive normal) */
-
-/*--- Summaries Tag Icon Recolor ---*/
-/* .summariesBetaTag_cf58b5 { color: var(--base03); } */ /* RESTORED (likely uses brand color) */
-
-/*--- Folder Icon Recolor ---*/
-/* div.folderIconWrapper__48112 { background-color: var(--base01) !important; } */ /* RESTORED */
-
-/*--- Voice Chat Action Icon Recolor ---*/
-/*
-path[fill^="rgb(88,101,242)"],
-path[stroke^="rgb(88,101,242)"] {
-    fill: var(--base05) !important;
-    stroke: var(--base05) !important;
-}
-.lottieIcon__5eb9b.lottieIconColors__5eb9b.buttonIcon_e131a9 {
-    --__lottieIconColor: var(--base05) !important;
-}
-*/ /* RESTORED */
-div[class^="actionButtons"] [class^="button"][class*="buttonColor_"],
-div[class^="actionButtons"] [class^="button"] [class*="buttonColor_"] {
-    background-color: var(--button-secondary-background) !important; /* Use themed secondary button bg */
-}
-
-/* --- Checkbox Recolor (OFF) --- */
-/* .container__87bf1 { background-color: var(--base03) !important; } */ /* RESTORED */
-/* --- Checkbox Recolor (ON) --- */
-/*
-.checked__87bf1 { background-color: var(--base0B) !important; }
-path[fill^="var(--brand-500)"] { fill: var(--base0B) !important; }
-*/ /* RESTORED */
-
-/* --- Secure Lock Icon Recolor --- */
-/* .lockIcon__2666b { display: none; } */ /* RESTORED */
-
-/*--- Status Icon Recolor Sections ---*/
-/* ALL REMOVED to allow default Discord status colors. Discord uses specific hex codes. */
-
-/*--- Default Color Swap ---*/
-/*
-path[fill^="currentColor"],
-svg[fill^="currentColor"],
-rect[fill^="currentColor"] {
-    fill: var(--base05) !important;
-}
-*/ /* RESTORED - currentColor should behave naturally */
-
-/*--- Voice Chat Icon Badge Recolor ---*/
-/*
-div[class^="iconBadge"] path[d^="M12 3a1 1 0 0 0-1-1h-.06"],
-div[class^="iconBadge"] path[d^="M15.16 16.51c-.57.28"] {
-    fill: var(--base05) !important;
-}
-*/ /* RESTORED (usually red) */
-
-/*--- Nitro Icon Recolor ---*/
-/*
-.premiumLabel_e681d1 svg path,
-svg.guildBoostBadge__5dba5 path {
-    fill: var(--base0E) !important;
-}
-*/ /* RESTORED */
-
-/*--- Server Booster Icon Recolor ---*/
-/*
-.premiumIcon__5d473 {
-    color: var(--base0F);
-}
-*/ /* RESTORED */
+/* All specific element color overrides for statuses, nitro, specific icons are presumed REMOVED or COMMENTED OUT from previous versions to allow Discord defaults */
 
 /*--- Call Container Recolor ---*/
-.callContainer_cb9592 { background-color: var(--base00) !important; }
-.gradientContainer_bfe55a { background: var(--base00) !important; }
+.callContainer_cb9592 { background-color: var(--background-primary) !important; }
+.gradientContainer_bfe55a { background: var(--background-primary) !important; }
 
 /*--- Store Gradient Recolors ---*/
-.gradient_e9ef78 { background: var(--base01) !important; }
+.gradient_e9ef78 { background: var(--base00) !important; }
 .bannerGradient__955a3 { background: var(--base00) !important; }
 
 /*--- Increase Text Legibility ---*/
 * { text-rendering: optimizeLegibility !important; }
 
 /*--- Codeblock Syntax Highlighting Recolor (Kept from original for style) ---*/
-.hljs { background: var(--background-code) !important; color: var(--text-normal) !important; }
+.hljs { background: var(--background-code) !important; color: var(--text-normal) !important; padding: 0.5em; border-radius: 4px;}
 .hljs-ansi-foreground-red { color: var(--base08) !important; }
 .hljs-ansi-foreground-green { color: var(--base0B) !important; }
 .hljs-ansi-foreground-yellow { color: var(--base0A) !important; }
@@ -315,7 +153,7 @@ svg.guildBoostBadge__5dba5 path {
 .hljs-attr, .hljs-attribute, .hljs-number, .hljs-selector-class { color: var(--base06) !important; }
 .hljs-comment, .hljs-meta { color: var(--base03) !important; }
 .hljs-subst { color: var(--base0D) !important; }
-.hljs-selector-pseudo, .hljs-section, .hljs-string { color: var(--base0B) !important; } /* String to base0B for better contrast */
+.hljs-selector-pseudo, .hljs-section, .hljs-string { color: var(--base0B) !important; }
 .hljs-keyword, .hljs-variable { color: var(--base08) !important; }
 .hljs-built_in { color: var(--base09) !important; }
 .hljs-title { color: var(--base0E) !important; }
@@ -323,29 +161,32 @@ svg.guildBoostBadge__5dba5 path {
 
 /*--- Visual Refresh Recolor ---*/
 .visual-refresh {
-    div[class^="autocomplete__"] { background-color: var(--base01) !important; }
-    /* path[fill^="rgba(88, 101, 242, 1)"] { fill: var(--base0B) !important; } */ /* RESTORED */
-    div[class^="topicsPillContainer"] { --bg-overlay-2: var(--base01) !important; }
-    .tagPill__9a337 { background-color: var(--base01) !important; } /* Themed dark */
-    .bg__960e4 { background: var(--base00) !important; }
-    .header_f37cb1 { background-color: var(--background-tertiary) !important; } /* Use variable */
-    .wrapper_ef3116 { background-color: var(--background-secondary) !important; } /* Use variable */
-    .sidebar_c48ade { background-color: var(--background-secondary) !important; } /* Use variable */
-    .searchBar__97492 { background-color: var(--input-background) !important; } /* Use variable */
-    .channelTextArea_f75fb0 { background: var(--channeltextarea-background) !important; } /* Use variable */
-    .chatContent_f75fb0 { background-color: var(--background-primary) !important; } /* Use variable */
-    .members_c8ffbb, .member_c8ffbb { background: var(--background-secondary-alt) !important; } /* Use variable */
-    .voiceBar__7aaec { background-color: var(--base01) !important; }
-
+    div[class^="autocomplete__"] { background-color: var(--background-floating) !important; }
+    /* path[fill^="rgba(88, 101, 242, 1)"] { fill: var(--base0B) !important; } */ /* RESTORED (blurple default) */
+    div[class^="topicsPillContainer"] { --bg-overlay-2: var(--base00) !important; }
+    .tagPill__9a337 { background-color: var(--base00) !important; }
+    .bg__960e4 { background: var(--background-primary) !important; }
+    .header_f37cb1 { background-color: var(--background-tertiary) !important; }
+    .wrapper_ef3116 { background-color: var(--background-secondary) !important; }
+    .sidebar_c48ade { background-color: var(--background-secondary) !important; }
+    .searchBar__97492 { background-color: var(--input-background) !important; }
+    .channelTextArea_f75fb0 { background: var(--channeltextarea-background) !important; }
+    .chatContent_f75fb0 { background-color: var(--background-primary) !important; }
+    .members_c8ffbb, .member_c8ffbb { background: var(--background-secondary-alt) !important; }
+    .voiceBar__7aaec { background-color: var(--background-tertiary) !important; } /* e.g. connected to voice bar */
     /* button.button__67645.redGlow__67645,
-    span.button__67645.redGlow__67645 { background-color: var(--base02) !important; } */ /* RESTORED */
+    span.button__67645.redGlow__67645 { background-color: var(--base02) !important; } */ /* RESTORED (red glow default) */
 
     /* .experimentButton_e131a9.buttonColor_e131a9.buttonActive_e131a9 {
         background-color: var(--base0B) !important;
         color: var(--base00) !important;
-    } */ /* RESTORED */
+    } */ /* RESTORED (default active experiment button) */
 
     .selectedBackground_e681d1 { background-color: var(--base02) !important; } /* Kept themed for selected item */
 
-    /* Status Icon Recolors for Visual Refresh - ALL REMOVED for default Discord colors */
+    /* Status Icon Recolors for Visual Refresh - ALL REMOVED for default Discord colors - this remains correct */
 }
+
+/* Remove specific overrides for status icons, nitro icons, etc., if they were present,
+   to ensure Discord's original colors are used. The commenting out of CSS variables handles most of this.
+   The previous iterations of the CSS should have already done this. */
