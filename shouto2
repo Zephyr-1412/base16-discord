@@ -1,236 +1,352 @@
 /**
- * @name UI Refresh Refresh - AMOLED
- * @author programmer2514 (AMOLED mod by AI)
- * @description Enjoy Discord's UI refresh without visual inconsistencies, now in AMOLED black.
- * @version 1.1.1-amoled
- */
+* @name Comfy AMOLED - Discord Defaults
+* @author Nyria#3863 (AMOLED Mod by AI)
+* @maintained by Abdist
+* @description Stay comfy with AMOLED black backgrounds and default Discord element colors.
+* @invite rtBQX5D3bD
+* @version 2.4-amoled
+* @donate https://ko-fi.com/nyria
+*/
 
+/* Original Comfy Imports - KEEP THESE */
+@import "https://raw.githubusercontent.com/BlacklightYT/comfy/main/comfy/main.css";
+@import "https://raw.githubusercontent.com/BlacklightYT/comfy/main/comfy/user-waves-nyan.css";
+@import "https://comfy-themes.github.io/Discord/betterdiscord/no-scrollbar.css";
+@import "https://comfy-themes.github.io/Discord/betterdiscord/better-spotify.css";
+@import "https://raw.githubusercontent.com/BlacklightYT/comfy/main/comfy/banner.css";
+
+/* --- Overriding Variables for AMOLED Black & Discord Default Elements --- */
 :root {
-    /* AMOLED Backgrounds */
-    --background-primary: #000000 !important;         /* Main app background */
-    --background-secondary: #000000 !important;       /* Secondary background elements */
-    --background-tertiary: #000000 !important;        /* Tertiary background elements */
-    --background-floating: #000000 !important;        /* Popouts, modals */
-    --bg-overlay-floating: #000000 !important;      /* Used by .scrollableContainer */
-    --background-base-low: #000000 !important;      /* Fallback for .scrollableContainer */
-    --input-background: #000000 !important;           /* Background for input-like items */
+  /* Structural/Non-Color Vars (some adjusted for Discord feel) */
+  --disable-animations: 2s channel-unread infinite; /* User preference */
+  --user-buttons-spacing: 8px; /* Comfy's default, can be adjusted */
+  --avatar-radius: 50% !important; /* Discord default: circle */
+  --status-radius: 3px !important; /* Comfy's default, or 50% for full circle status on avatar */
+  --server-radius: 25% !important; /* Discord squircle, or 50% for circle */
+  --role-circle: 3px !important; /* Discord default: more pill-like, adjust as needed */
+  --discord-logo: block !important; /* Ensure Discord logo is visible if Comfy hides it */
+  --colored-emoji: grayscale(100%) !important; /* Default Discord emojis (no color overlay) */
 
-    /* Text Colors for AMOLED */
-    --text-normal: #DCDDDE !important;                /* Default text color */
-    --text-muted: #72767D !important;                 /* Muted text color */
-    --header-primary: #F0F0F0 !important;             /* Primary headers (e.g., settings) */
-    --header-secondary: #B9BBBE !important;           /* Secondary headers */
-    --interactive-normal: #B9BBBE !important;         /* Interactive elements */
-    --interactive-hover: #DCDDDE !important;          /* Interactive elements on hover */
-    --interactive-active: #FFFFFF !important;         /* Interactive elements when active */
+  /* AMOLED Black Backgrounds */
+  --background-primary: #000000 !important;
+  --background-secondary: #000000 !important;
+  --background-secondary-alt: #000000 !important;
+  --background-tertiary: #000000 !important;
+  --background-floating: #000000 !important;
+  --modal-background: #000000 !important;
+  --background-mobile-primary: #000000 !important;
+  --background-mobile-secondary: #000000 !important;
+  --channeltextarea-background: #000000 !important;
+  --deprecated-card-bg: rgba(0,0,0,0.3) !important; /* Subtle card on black if needed, else #000000 */
+  --deprecated-quickswitcher-input-background: #000000 !important;
+  --activity-card-background: #000000 !important;
+  --input-background: #0D0D0D !important; /* Very dark grey for inputs to distinguish from pure black */
+  --background-message-hover: transparent !important; /* Default Discord: no specific message hover bg */
+  --theme-base-color: #000000 !important; /* Comfy uses this in .visual-refresh */
+  --bg-overlay: #000000 !important;
+  --bg-overlay-1: #000000 !important;
+  --bg-overlay-2: #000000 !important;
+  --bg-overlay-3: #000000 !important;
+  --bg-overlay-4: #000000 !important;
+  --bg-overlay-chat: #000000 !important;
+  --bg-base-primary: #000000 !important;
+  --bg-base-secondary: #000000 !important;
+  --bg-base-tertiary: #000000 !important;
+  --card-primary-bg: #000000 !important;
+  --background-base-lowest: #000000 !important;
+  --background-base-low: #000000 !important; /* Can be #0A0A0A for very subtle layering */
+  --bg-overlay-floating: #000000 !important;
+  --background-brighter: #0A0A0A !important; /* For elements Comfy wants slightly brighter than main bg */
 
-    /* Borders for AMOLED */
-    --border-subtle: #1A1A1A !important;              /* Subtle borders, very dark grey */
-    --input-border: #1A1A1A !important;               /* Border for input-like items */
 
-    /* Scrollbar Colors (optional, if theme doesn't fully override) */
-    --scrollbar-thin-thumb: #202020 !important;
-    --scrollbar-thin-track: transparent !important;
-    --scrollbar-auto-thumb: #202020 !important;
-    --scrollbar-auto-track: #0A0A0A !important; /* Slightly visible track on pure black */
+  /* Element Colors - Discord Defaults */
+  /* Status */
+  --online: #3BA55D !important;
+  --iddle: #FAA81A !important; /* Comfy uses 'iddle', this matches Discord's color for idle */
+  --dnd: #ED4245 !important;
+  --offline: #747F8D !important;
+  --streaming: #593695 !important;
+  /* Spotify/Playing (Comfy uses --playing) */
+  --playing: #1DB954 !important; /* Spotify Green */
+  /* Mentions */
+  --mention-color: #5865F2 !important; /* Text color of @mention link */
+  --mention-color-bar: #FAA81A !important; /* Yellowish bar for mentions */
+  --mention-color-background: rgba(250, 166, 26, 0.1) !important; /* Translucent yellow bg */
+  --mention-color-hover: rgba(250, 166, 26, 0.15) !important; /* Slightly darker translucent yellow bg for hover */
+  --background-mentioned: rgba(250, 166, 26, 0.1) !important; /* Comfy's var for this */
+  --background-mentioned-hover: rgba(250, 166, 26, 0.15) !important; /* Comfy's var for this */
+  --mention-foreground: #FFFFFF !important; /* Text color on mention highlight background */
+  /* Unread Indicators */
+  --unread-color: #FFFFFF !important; /* For text on unread pills/dots. Pill BG often red (see specific overrides) */
+  /* User/Chat Buttons */
+  --user-buttons-color: #B9BBBE !important; /* Default icon color */
+  --chat-buttons: #B9BBBE !important;       /* Default icon color */
+
+  /* Comfy's Accent System - Set to Discord Blurple */
+  --background-accent: #5865F2 !important; /* Direct override for where Comfy uses this */
+  --red: 88 !important;   /* R of Blurple: 88 */
+  --green: 101 !important; /* G of Blurple: 101 */
+  --blue: 242 !important;  /* B of Blurple: 242 */
+  --accent-color: rgb(var(--red), var(--green), var(--blue)) !important;
+  --accent-color-alpha: rgba(var(--red), var(--green), var(--blue), 0.5) !important;
+  /* HSL calculation for text contrast on accent color (uses above RGB) */
+  --threshold: 0.5 !important;
+  --r_calc: calc(var(--red) * 0.2126) !important; /* Renamed from r,g,b to avoid conflicts */
+  --g_calc: calc(var(--green) * 0.7152) !important;
+  --b_calc: calc(var(--blue) * 0.0722) !important;
+  --sum_calc: calc(var(--r_calc) + var(--g_calc) + var(--b_calc)) !important;
+  --per-brightness: calc(var(--sum_calc) / 255) !important;
+  --accent-color-hsl: hsl(0, 0%, calc((var(--per-brightness) - var(--threshold)) * -1000%)) !important;
+
+  /* Other Comfy Variables to Align with Discord Defaults / Neutralize for AMOLED */
+  --main-color: #5865F2 !important; /* Comfy uses this for various accents, set to Discord Blurple */
+  --channel-icon: #8E9297 !important; /* Default channel icon color */
+  --channel-text-area-placeholder: #A3A6AA !important; /* Default placeholder text color */
+  --background-message-highlight: rgba(88, 101, 242, 0.05) !important; /* Subtle blurple for reply context line */
+  --brand-experiment: rgba(88, 101, 242, 0.2) !important; /* Reaction outline to blurple */
+  --brand-experiment-10a: rgba(88, 101, 242, 0.1) !important; /* Used for reply hover in Comfy, make subtle blurple */
+  --brand-experiment-15a: rgba(88, 101, 242, 0.15) !important; /* Similar to above */
+  --interactive-muted: #72767D !important; /* Default muted text/icon color */
+
+  /* Scrollbars for AMOLED */
+  --scrollbar-auto-thumb: #202020 !important;
+  --scrollbar-auto-track: #0A0A0A !important; /* Very dark track, or transparent */
+  --scrollbar-thin-thumb: #202020 !important;
+  --scrollbar-thin-track: transparent !important;
+
+  /* Elevations - minimize for flat AMOLED */
+  --elevation-low: none !important;
+  --elevation-medium: none !important;
+  --elevation-high: none !important;
+
+  /* Background Modifiers (hover, active, selected states) - make subtle on pure black */
+  --background-modifier-hover: rgba(255,255,255,0.02) !important;
+  --background-modifier-active: rgba(255,255,255,0.04) !important;
+  --background-modifier-selected: rgba(255,255,255,0.06) !important;
+
+  /* Text Colors - Ensure Discord Defaults for Readability on Black */
+  --text-normal: #DCDDDE !important;
+  --text-muted: #72767D !important; /* Already set for interactive-muted, good for general muted */
+  --text-link: #0096CF !important; /* Discord's default link blue */
+  --header-primary: #FFFFFF !important;
+  --header-secondary: #B9BBBE !important;
+  --interactive-normal: #B9BBBE !important;
+  --interactive-hover: #DCDDDE !important;
+  --interactive-active: #FFFFFF !important;
+  --channels-default: #8E9297 !important;
+  --text-positive: #3BA55D !important;
+  --text-warning: #FAA81A !important;
+  --text-danger: #ED4245 !important;
 }
 
-/* Original Theme CSS Starts Here */
-.visual-refresh {
-    --custom-guild-list-padding: min(var(--space-sm));
+/* Comfy's .theme-dark and .visual-refresh .theme-darker also define variables.
+   The :root overrides with !important should cover them.
+   If specific issues arise, those blocks would need to be explicitly overridden here too,
+   duplicating the relevant variables from the :root block above.
+   For example:
+*/
+.theme-dark,
+.visual-refresh .theme-darker, .visual-refresh.theme-darker {
+  /* Re-assert all background variables to #000000 */
+  --background-primary: #000000 !important;
+  --background-secondary: #000000 !important;
+  --background-secondary-alt: #000000 !important;
+  --background-tertiary: #000000 !important;
+  --background-accent: #5865F2 !important; /* Discord Blurple */
+  --background-brighter: #0A0A0A !important;
+  --theme-base-color: #000000 !important;
+  --bg-overlay: #000000 !important;
+  --bg-overlay-1: #000000 !important;
+  --bg-overlay-2: #000000 !important;
+  --bg-overlay-3: #000000 !important;
+  --bg-overlay-4: #000000 !important;
+  --bg-overlay-chat: #000000 !important;
+  --bg-base-primary: #000000 !important;
+  --bg-base-secondary: #000000 !important;
+  --bg-base-tertiary: #000000 !important;
+  --card-primary-bg: #000000 !important;
+  --background-base-lowest: #000000 !important;
+  --background-base-low: #000000 !important;
+  --bg-overlay-floating: #000000 !important;
+  --modal-background: #000000 !important;
+  --background-mobile-primary: #000000 !important;
+  --background-mobile-secondary: #000000 !important;
+  --channeltextarea-background: #000000 !important;
+  --deprecated-card-bg: rgba(0,0,0,0.3) !important;
+  --background-floating: #000000 !important;
+  --deprecated-quickswitcher-input-background: #000000 !important;
+  --elevation-low: none !important;
+  --scrollbar-auto-thumb: #202020 !important;
+  --scrollbar-auto-track: #0A0A0A !important;
+  --scrollbar-thin-thumb: #202020 !important;
+  --activity-card-background: #000000 !important;
+  --input-background: #0D0D0D !important;
+
+  /* Re-assert accent RGB for these specific contexts if needed */
+  --red: 88 !important;
+  --green: 101 !important;
+  --blue: 242 !important;
 }
 
-.sidebarListRounded_c48ade,
-.sidebar_c48ade {
-    border-radius: 0 !important;
+
+/* --- Specific CSS Overrides for Comfy Elements to Match Discord Default Feel --- */
+
+/* Remove Comfy's username gradients/animations for default look */
+.clickableUsername__63ed3, .nickname__63ed3.user-profile-modal,
+.nickname__63ed3, .usernameRow__63ed3,
+.userTagUsername__63ed3 {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important; /* Allows color to be inherited or set by Discord's classes */
+  animation: none !important;
+  color: inherit !important; /* Let Discord's role color or default text color apply */
+  filter: none !important;
+}
+.userTag__63ed3 { /* Username#TAG part */
+  filter: none !important;
+  color: var(--header-secondary) !important; /* Default tag color */
 }
 
-.guilds_c48ade {
-    border-top: 1px solid var(--border-subtle);
+/* Revert Comfy's message list item hover effect */
+.messageListItem__5126c:before {
+  background: transparent !important; /* Remove Comfy's custom hover background */
+  transform: scaleX(0) !important; /* Ensure it's not visible */
+}
+.messageListItem__5126c:hover,
+.messageListItem__5126c:focus,
+.messageListItem__5126c:active {
+  color: inherit !important; /* Use default text hover behavior */
+}
+/* Ensure actual message hover uses Discord's default subtle highlight if any, or transparent */
+.messageListItem__5126c .contents__5126c:hover {
+  background-color: var(--background-modifier-hover) !important; /* Default subtle hover */
 }
 
-.scroller_ef3116 {
-    padding-top: var(--space-xs) !important;
+
+/* Revert Comfy's username background highlight in chat */
+.cozy_c19a55 .headerText_c19a55 > .username_c19a55::before {
+  display: none !important;
+}
+.cozy_c19a55 .headerText_c19a55 > .username_c19a55 {
+  margin-left: 0 !important; /* Reset Comfy's margin */
 }
 
-.title_c38106 {
-    justify-content: start;
-    margin-left: var(--space-xs);
+/* "NEW" unread pill and line to Discord defaults */
+:root .divider__908e2 .unreadPill__908e2 {
+  color: #FFFFFF !important; /* White text on pill */
+  background-color: var(--dnd) !important; /* Discord's DND red for unread pill bg */
+  box-shadow: none !important;
+}
+:root .isUnread__908e2 .content__908e2 { /* "New messages" line text */
+  color: var(--dnd) !important; /* Discord's DND red */
+}
+:root .divider__908e2.isUnread__908e2:before { /* The line itself */
+    border-top-color: var(--dnd) !important;
 }
 
-.title__85643 div:last-child::before {
-    content: "Discord - ";
+
+/* Bot tags to Discord defaults */
+.botTagRegular__82f07, .px__82f07 /* Comfy uses .px for some bot tags */ {
+  background-color: #5865F2 !important; /* Discord blurple */
+  border-radius: 3px !important;
+}
+.botText__82f07 {
+  color: #FFFFFF !important; /* White text */
+}
+.botTagVerified__82f07 path { /* Verified checkmark */
+  fill: #FFFFFF !important;
 }
 
-.winButtons_c38106 {
-    gap: 0;
+/* Reactions to Discord defaults */
+.reaction__23977 { /* Default reaction */
+    background-color: rgba(255,255,255,0.03) !important; /* Very subtle bg on black */
+    border: 1px solid rgba(255,255,255,0.05) !important;
+}
+.reaction__23977.reactionMe__23977 { /* My reaction */
+  border-color: var(--background-accent) !important; /* Blurple border */
+  background-color: rgba(88, 101, 242, 0.1) !important; /* Light blurple background */
+}
+.reaction__23977.reactionMe__23977:hover {
+  filter: brightness(1.15); /* Keep Comfy's subtle hover brightness for "my reaction" */
+}
+.reaction__23977:hover { /* Hover for other reactions */
+    background-color: rgba(255,255,255,0.05) !important;
+    border-color: rgba(255,255,255,0.08) !important;
 }
 
-.winButtons_c38106::before {
-    padding-right: calc(var(--space-xs) / 2);
+
+/* Status bubbles (custom status text popups) - make them use standard dark background */
+.statusBubbleOuterAddStatusCursor_af9888::before, .statusBubbleOuterAddStatusCursor_af9888::after,
+.statusBubbleSingleLineWithTextShape_af9888::before, .statusBubbleSingleLineWithTextShape_af9888::after,
+.statusBubbleWithTextPadding_af9888 {
+  background-color: var(--background-tertiary) !important; /* Use a standard dark bg from Discord's palette */
+  filter: none !important; /* Remove Comfy's drop shadow if any */
+  /* If --profile-gradient-primary-color is still affecting it: */
+  --profile-gradient-primary-color: var(--background-tertiary) !important;
 }
 
-.winButton_c38106 {
-    padding: 0 calc(var(--space-xs) / 2);
+/* Comfy's specific colored titles/strong tags in messages - revert to accent or default */
+[class*=messageContent] :is(h1, h2, h3),
+[class*=messageContent] strong {
+  color: var(--header-primary) !important; /* Default strong/header color */
+}
+/* If you want them to use the main accent (Blurple): */
+/* [class*=messageContent] :is(h1, h2, h3),
+[class*=messageContent] strong {
+  color: var(--accent-color) !important;
+} */
+
+/* General button styling to ensure they use default Discord appearances */
+.lookFilled__201d5.colorBrand__201d5 { /* Brand colored buttons (e.g. "Join") */
+  background-color: var(--background-accent) !important; /* Blurple */
+  color: #FFFFFF !important;
+}
+.lookFilled__201d5.colorBrand__201d5:hover {
+  background-color: hsl(from var(--background-accent) h s calc(l - 5%)) !important; /* Slightly darker blurple */
+}
+.lookFilled__201d5.colorPrimary__201d5 { /* Primary action buttons (often grey) */
+  background-color: #474D56 !important; /* Discord's grey button color */
+  color: #FFFFFF !important;
+}
+.lookFilled__201d5.colorPrimary__201d5:hover {
+  background-color: #595F6A !important; /* Slightly lighter grey */
+}
+/* Ensure Comfy's specific overrides for these don't make them too dark/light on AMOLED */
+.lookFilled__201d5.colorBrand__201d5 {
+  background-color: var(--background-accent) !important; /* Re-assert Blurple from variables */
+}
+.lookFilled__201d5.colorBrand__201d5:hover {
+  filter: brightness(0.9) !important; /* Keep Comfy's subtle brightness change if desired on Blurple */
 }
 
-.recentsIcon_c99c29 {
-    transform: translateX(calc(var(--space-xs) / 2));
+/* Remove Comfy's specific panel background if it's not pure black */
+.panels_c48ade {
+  background-color: var(--background-primary) !important; /* Ensure AMOLED black */
+  border-top: 1px solid var(--background-tertiary) !important; /* Subtle border if needed */
+  border-left: 1px solid var(--background-tertiary) !important;
 }
 
-.channelTextArea_f75fb0 {
-    margin-bottom: var(--space-xs);
+/* Comfy's message hover animation - remove for default feel */
+.member__5d473:hover,
+.link__972a0:hover, .link__2ea32:hover {
+  transition: none !important;
+  transform: none !important;
 }
 
-.scrollableContainer__74017 {
-    background: var(--bg-overlay-floating,var(--background-base-low))
+/* Avatar decorations and masks - try to simplify or use defaults */
+/* This is complex and highly dependent on Comfy's implementation.
+   For a true default feel, these might need to be heavily overridden or disabled.
+   A simple approach: */
+.avatarDecoration__44b0c foreignObject,
+.svg__2338f foreignObject {
+  mask: none !important; /* Attempt to remove custom masks */
+}
+/* Reset Comfy's specific transforms on status indicators if they look off */
+.memberInner__5d473.layout__91a9d > .avatar__91a9d > .wrapper__44b0c > svg.mask__44b0c.svg__44b0c > g,
+.content__99f8c > .mask__44b0c.svg__44b0c > g {
+  transform: none !important;
 }
 
-.inner__74017 > * {
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
 
-.scrollerSpacer__36d07 {
-    height: var(--space-32) !important;
-}
-
-.typing_b88801 {
-    top: calc(0px - var(--space-24));
-    left: 0 !important;
-    background: var(--background-secondary);
-    padding-left: var(--space-16);
-}
-
-.chatLayerWrapper__01ae2 {
-    position: absolute;
-    z-index: 100;
-}
-
-.threadSidebarOpen_f75fb0 ~ .chatLayerWrapper__01ae2 {
-    top: var(--custom-channel-header-height) !important;
-    height: calc(100% - var(--custom-channel-header-height)) !important;
-}
-
-.chatLayerWrapper__01ae2 > * {
-    border-radius: 0;
-    width: 450px !important;
-}
-
-.floating__01ae2 {
-    filter: none;
-}
-
-.resizeHandle__01ae2 {
-    display: none;
-}
-
-div:not([class])[style^="min-width"] {
-    display: none;
-}
-
-section.container__9293f {
-    padding-left: var(--space-xs) !important;
-}
-
-.outer_c0bea0:not(.custom-profile-theme) > .inner_c0bea0 {
-    background-color: var(--background-tertiary) !important;
-}
-
-.wrapper__1405b,
-.wrapper__1405b > * {
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-div:has(> .wrapper__1405b) {
-    flex-shrink: 0 !important;
-    max-width: 100%;
-}
-
-.top_b3f026 {
-    gap: var(--space-xl);
-    max-width: 100%;;
-}
-
-.top_b3f026 > .item_b3f026 {
-    margin: 0 !important;
-    padding: 0 var(--space-xxs) var(--space-sm) !important;
-}
-
-.contentRegion__23e6b,
-.contentRegionScroller__23e6b {
-    background: var(--background-secondary) !important;
-}
-
-.settingsPage_f131e9 > h3 {
-    font-size: 20px;
-    /* Color will be inherited or use --header-primary */
-}
-
-.container_dc2e0e::before {
-    content: "Family Center";
-    font-family: var(--font-display);
-    font-size: 20px;
-    line-height: 1.25;
-    font-weight: 600;
-    color: var(--header-primary);
-    margin-bottom: 32px;
-}
-
-.item__001a7 {
-    border: 1px solid var(--input-border);
-    background: var(--input-background);
-}
-
-#profile-customization-tab h2 {
-    color: var(--header-primary)
-}
-
-.bd-addon-card,
-.bd-store-card,
-.bd-addon-store-card {
-    border-radius: var(--radius-sm) !important;
-    border: 1px solid var(--border-subtle);
-    background-color: var(--background-secondary); /* Added for AMOLED consistency */
-}
-
-.bd-links {
-    gap: var(--space-xs);
-}
-
-.theme-midnight main > section.container__9293f {
-    border-left: 1px solid var(--border-subtle);
-}
-
-.theme-midnight .panel_c0bea0 .inner_c0bea0 {
-    border-left: 1px solid var(--border-subtle);
-}
-
-.theme-midnight .sidebarRegion__23e6b {
-    border-right: 1px solid var(--border-subtle);
-}
-
-.theme-midnight .accountProfileCard__1fed1 {
-    border: 1px solid var(--border-subtle);
-    background-color: var(--background-secondary); /* Added for AMOLED consistency */
-}
-
-.theme-midnight .biteSize_c0bea0 .inner_c0bea0 {
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    background-color: var(--background-secondary); /* Added for AMOLED consistency */
-}
-
-@media (min-width: 1216px) {
-    .threadSidebarOpen_f75fb0 .content_f75fb0 > * {
-        flex-shrink: 100;
-    }
-
-    .threadSidebarOpen_f75fb0 .content_f75fb0::after {
-        content: "";
-        display: block;
-        width: 450px;
-        height: 100%;
-    }
-}
+/* Any other specific Comfy elements that have hardcoded colors or non-default styles
+   would need additional targeted overrides here. */
