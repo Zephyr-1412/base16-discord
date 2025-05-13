@@ -1,0 +1,236 @@
+/**
+ * @name UI Refresh Refresh - AMOLED
+ * @author programmer2514 (AMOLED mod by AI)
+ * @description Enjoy Discord's UI refresh without visual inconsistencies, now in AMOLED black.
+ * @version 1.1.1-amoled
+ */
+
+:root {
+    /* AMOLED Backgrounds */
+    --background-primary: #000000 !important;         /* Main app background */
+    --background-secondary: #000000 !important;       /* Secondary background elements */
+    --background-tertiary: #000000 !important;        /* Tertiary background elements */
+    --background-floating: #000000 !important;        /* Popouts, modals */
+    --bg-overlay-floating: #000000 !important;      /* Used by .scrollableContainer */
+    --background-base-low: #000000 !important;      /* Fallback for .scrollableContainer */
+    --input-background: #000000 !important;           /* Background for input-like items */
+
+    /* Text Colors for AMOLED */
+    --text-normal: #DCDDDE !important;                /* Default text color */
+    --text-muted: #72767D !important;                 /* Muted text color */
+    --header-primary: #F0F0F0 !important;             /* Primary headers (e.g., settings) */
+    --header-secondary: #B9BBBE !important;           /* Secondary headers */
+    --interactive-normal: #B9BBBE !important;         /* Interactive elements */
+    --interactive-hover: #DCDDDE !important;          /* Interactive elements on hover */
+    --interactive-active: #FFFFFF !important;         /* Interactive elements when active */
+
+    /* Borders for AMOLED */
+    --border-subtle: #1A1A1A !important;              /* Subtle borders, very dark grey */
+    --input-border: #1A1A1A !important;               /* Border for input-like items */
+
+    /* Scrollbar Colors (optional, if theme doesn't fully override) */
+    --scrollbar-thin-thumb: #202020 !important;
+    --scrollbar-thin-track: transparent !important;
+    --scrollbar-auto-thumb: #202020 !important;
+    --scrollbar-auto-track: #0A0A0A !important; /* Slightly visible track on pure black */
+}
+
+/* Original Theme CSS Starts Here */
+.visual-refresh {
+    --custom-guild-list-padding: min(var(--space-sm));
+}
+
+.sidebarListRounded_c48ade,
+.sidebar_c48ade {
+    border-radius: 0 !important;
+}
+
+.guilds_c48ade {
+    border-top: 1px solid var(--border-subtle);
+}
+
+.scroller_ef3116 {
+    padding-top: var(--space-xs) !important;
+}
+
+.title_c38106 {
+    justify-content: start;
+    margin-left: var(--space-xs);
+}
+
+.title__85643 div:last-child::before {
+    content: "Discord - ";
+}
+
+.winButtons_c38106 {
+    gap: 0;
+}
+
+.winButtons_c38106::before {
+    padding-right: calc(var(--space-xs) / 2);
+}
+
+.winButton_c38106 {
+    padding: 0 calc(var(--space-xs) / 2);
+}
+
+.recentsIcon_c99c29 {
+    transform: translateX(calc(var(--space-xs) / 2));
+}
+
+.channelTextArea_f75fb0 {
+    margin-bottom: var(--space-xs);
+}
+
+.scrollableContainer__74017 {
+    background: var(--bg-overlay-floating,var(--background-base-low))
+}
+
+.inner__74017 > * {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.scrollerSpacer__36d07 {
+    height: var(--space-32) !important;
+}
+
+.typing_b88801 {
+    top: calc(0px - var(--space-24));
+    left: 0 !important;
+    background: var(--background-secondary);
+    padding-left: var(--space-16);
+}
+
+.chatLayerWrapper__01ae2 {
+    position: absolute;
+    z-index: 100;
+}
+
+.threadSidebarOpen_f75fb0 ~ .chatLayerWrapper__01ae2 {
+    top: var(--custom-channel-header-height) !important;
+    height: calc(100% - var(--custom-channel-header-height)) !important;
+}
+
+.chatLayerWrapper__01ae2 > * {
+    border-radius: 0;
+    width: 450px !important;
+}
+
+.floating__01ae2 {
+    filter: none;
+}
+
+.resizeHandle__01ae2 {
+    display: none;
+}
+
+div:not([class])[style^="min-width"] {
+    display: none;
+}
+
+section.container__9293f {
+    padding-left: var(--space-xs) !important;
+}
+
+.outer_c0bea0:not(.custom-profile-theme) > .inner_c0bea0 {
+    background-color: var(--background-tertiary) !important;
+}
+
+.wrapper__1405b,
+.wrapper__1405b > * {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div:has(> .wrapper__1405b) {
+    flex-shrink: 0 !important;
+    max-width: 100%;
+}
+
+.top_b3f026 {
+    gap: var(--space-xl);
+    max-width: 100%;;
+}
+
+.top_b3f026 > .item_b3f026 {
+    margin: 0 !important;
+    padding: 0 var(--space-xxs) var(--space-sm) !important;
+}
+
+.contentRegion__23e6b,
+.contentRegionScroller__23e6b {
+    background: var(--background-secondary) !important;
+}
+
+.settingsPage_f131e9 > h3 {
+    font-size: 20px;
+    /* Color will be inherited or use --header-primary */
+}
+
+.container_dc2e0e::before {
+    content: "Family Center";
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 600;
+    color: var(--header-primary);
+    margin-bottom: 32px;
+}
+
+.item__001a7 {
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
+}
+
+#profile-customization-tab h2 {
+    color: var(--header-primary)
+}
+
+.bd-addon-card,
+.bd-store-card,
+.bd-addon-store-card {
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--background-secondary); /* Added for AMOLED consistency */
+}
+
+.bd-links {
+    gap: var(--space-xs);
+}
+
+.theme-midnight main > section.container__9293f {
+    border-left: 1px solid var(--border-subtle);
+}
+
+.theme-midnight .panel_c0bea0 .inner_c0bea0 {
+    border-left: 1px solid var(--border-subtle);
+}
+
+.theme-midnight .sidebarRegion__23e6b {
+    border-right: 1px solid var(--border-subtle);
+}
+
+.theme-midnight .accountProfileCard__1fed1 {
+    border: 1px solid var(--border-subtle);
+    background-color: var(--background-secondary); /* Added for AMOLED consistency */
+}
+
+.theme-midnight .biteSize_c0bea0 .inner_c0bea0 {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background-color: var(--background-secondary); /* Added for AMOLED consistency */
+}
+
+@media (min-width: 1216px) {
+    .threadSidebarOpen_f75fb0 .content_f75fb0 > * {
+        flex-shrink: 100;
+    }
+
+    .threadSidebarOpen_f75fb0 .content_f75fb0::after {
+        content: "";
+        display: block;
+        width: 450px;
+        height: 100%;
+    }
+}
