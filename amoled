@@ -1,0 +1,31 @@
+/**
+ * @name         Quiet AMOLED
+ * @description  AMOLED Black, Dark and Quiet. Easy on the eyes. No red.
+ * @author       Izy (Modified by AI)
+ * @version      2.1
+ * @source       https://github.com/squee666/Discord-Themes/blob/master/Themes/Quiet.theme.css
+ * @invite       TeRQEPb
+ * @authorId     107511169366888448
+ */
+
+/* IMPORT CSS FROM GITHUB */
+@import url("https://cdn.jsdelivr.net/gh/squee666/Discord-Themes@refs/heads/master/css/Quiet.css");
+/*
+---------------------------------------------------------------------------------------------------------------------------------------------
+IMPORTANT: CHANGE DISCORDS THEME TO DARK THEME IN APPEARANCE SETTINGS FOR THIS THEME TO WORK!
+---------------------------------------------------------------------------------------------------------------------------------------------
+===== CUSTOMIZABLE COLORS =====
+*/
+:root{
+    --mc: #656565 !important;       /* Main Accent Colour - Was red, now a medium grey */
+    --hc: #888888 !important;       /* Hover Accent Colour - Was dark red, now a lighter grey */
+    --br: 50px !important;          /* Roundness of Icons - Kept as original */
+    --QT: #000000 !important;       /* Quiet Theme Colour - Changed to AMOLED black */
+    --QTD: #080808 !important;      /* Quiet Off Parts Colour - Changed to very dark grey, slightly off-black */
+    --white: #B0B0B0 !important;    /* Channel Text Colour - Was red (via var(--mc)), now a light grey for readability */
+}
+/*
+---------------------------------------------------------------------------------------------------------------------------------------------
+TROUBLESHOOTING: IF YOU NEED ANY HELP GO TO https://discord.gg/TeRQEPb (Original Author's Server)
+---------------------------------------------------------------------------------------------------------------------------------------------
+*/
